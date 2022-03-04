@@ -13,6 +13,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		6A5EC7DD95BA49B9AA54784B /* Amatic-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A936EA31B792439183CFF7AA /* Amatic-Bold.ttf */; };
+		7F4250DB4E7F44B680C9FDFB /* astro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5CADF269D6FD44C78C3E768F /* astro.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = AstroSeeker/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		A936EA31B792439183CFF7AA /* Amatic-Bold.ttf */ = {isa = PBXFileReference; name = "Amatic-Bold.ttf"; path = "../res/fonts/Amatic-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5CADF269D6FD44C78C3E768F /* astro.ttf */ = {isa = PBXFileReference; name = "astro.ttf"; path = "../res/fonts/astro.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 			isa = "PBXGroup";
 			children = (
 				A936EA31B792439183CFF7AA /* Amatic-Bold.ttf */,
+				5CADF269D6FD44C78C3E768F /* astro.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				6A5EC7DD95BA49B9AA54784B /* Amatic-Bold.ttf in Resources */,
+				7F4250DB4E7F44B680C9FDFB /* astro.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

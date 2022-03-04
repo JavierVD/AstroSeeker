@@ -4,7 +4,7 @@ import LottieView from 'lottie-react-native';
 
 
 
-export default class AboutUs extends React.Component {
+export default class Login extends React.Component {
 
 
   render() {
