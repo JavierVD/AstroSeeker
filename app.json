@@ -1,4 +1,12 @@
 {
   "name": "AstroSeeker",
-  "displayName": "AstroSeeker"
+  "displayName": "AstroSeeker",
+  "plugins": [
+    [
+      "@viro-community/react-viro",
+      {
+        "androidXrMode": ["GVR", "AR", "OVR_MOBILE"]
+      }
+    ]
+  ]
 }

@@ -12,6 +12,16 @@ target 'AstroSeeker' do
     :hermes_enabled => false
   )
 
+  pod 'react-native-video', :path => '../node_modules/react-native-video'
+
+  pod 'react-native-orientation', :path => '../node_modules/react-native-orientation'
+
+  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
+
+  pod 'react-native-keep-awake', :path => '../node_modules/react-native-keep-awake'
+
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
   target 'AstroSeekerTests' do
     inherit! :complete
     # Pods for testing
