@@ -83,7 +83,7 @@ export default class Login extends React.Component {
   tick_posicion = () => {
     if (this.state.textPosition >= 15) {
       this.setState({
-        posicionLogin: this.state.posicionLogin + 0.05,
+        posicionLogin: this.state.posicionLogin + 0.02,
       });
       if (this.setState.textPosition <= 26) {
         this.setState({
@@ -227,13 +227,38 @@ export default class Login extends React.Component {
             />
           </View>
           <View>
-            <Button
-              title="Iniciar Sesión"
-              style={{borderRadius: 14, width: '75%'}}
-              color={'rgba(255,255,255,0.2)'}
-              accessibilityLabel="Learn more about this purple button"
-            />
+            <TouchableOpacity style={styles.botonInicio}>
+              <Text>Iniciar Sesión</Text>
+            </TouchableOpacity>
           </View>
+          <View>
+            <TouchableOpacity style={styles.botonRegistrarse}>
+              <Text>Registrarme</Text>
+            </TouchableOpacity>
+          </View>
+          <View>
+            <TouchableOpacity style={styles.FacebookStyle} activeOpacity={0.5}>
+              <Icon
+                name={'ios-logo-facebook'}
+                size={28}
+                color={'rgba(255,255,255,0.7)'}
+                style={{top: 0}}
+              />
+              <Text>Acceder con Facebook</Text>
+            </TouchableOpacity>
+          </View>
+          <View>
+            <TouchableOpacity style={styles.GoogleStyle} activeOpacity={0.5}>
+              <Icon
+                name={'logo-google'}
+                size={28}
+                color={'rgba(0,0,0,0.7)'}
+                style={{top: 0}}
+              />
+              <Text>Acceder con Google</Text>
+            </TouchableOpacity>
+          </View>
+
         </View>
       </View>
     );
@@ -262,11 +287,68 @@ const styles = StyleSheet.create({
   mail: {
     width: Dimensions.get('window').width - 55,
     borderRadius: 30,
+    borderColor: 'rgba(255,255,255,0.7)',
     fontSize: 16,
     paddingLeft: 45,
-    backgroundColor: 'rgba(0,0,0,0.3)',
+    backgroundColor: 'rgba(0,0,0,0.0)',
     color: 'rgba(255,255,255,0.7)',
     marginHorizontal: 25,
+  },
+  FacebookStyle: {
+    position: 'absolute',
+    flexDirection: 'row',
+    margin: 10,
+    height: 40,
+    width: Dimensions.get('window').width - 55,
+    borderRadius: 30,
+    fontSize: 16,
+    top: 115,
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: 'rgba(255,255,255,0.7)',
+    marginHorizontal: 25,
+    backgroundColor: 'rgba(66,103,178,0.8)',
+  },
+  GoogleStyle: {
+    position: 'absolute',
+    flexDirection: 'row',
+    margin: 10,
+    height: 40,
+    width: Dimensions.get('window').width - 55,
+    borderRadius: 30,
+    fontSize: 16,
+    top: 165,
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: 'rgba(0,0,0,0.7)',
+    marginHorizontal: 25,
+    backgroundColor: 'rgba(204,204,204,0.8)',
+  },
+  botonInicio: {
+    position: 'absolute',
+    borderColor: 'white',
+    borderWidth: 2,
+    width: Dimensions.get('window').width - 55,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginHorizontal: 25,
+    borderRadius: 30,
+    top: 30,
+    backgroundColor: 'rgba(0,0,0,0.0)',
+  },
+  botonRegistrarse: {
+    position: 'absolute',
+    borderColor: 'white',
+    borderWidth: 2,
+    width: Dimensions.get('window').width - 55,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginHorizontal: 25,
+    borderRadius: 30,
+    top: 75,
+    backgroundColor: 'rgba(0,0,0,0.0)',
   },
   pass: {
     position: 'absolute',
