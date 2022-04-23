@@ -5,6 +5,7 @@ import {
   Text,
   View,
   Dimensions,
+  Button,
   TouchableOpacity,
   Image,
   StatusBar,
@@ -53,7 +54,7 @@ export default class Login extends React.Component {
       }
     }
     if (this.state.counterGeneral >= 6600) {
-      let timerPosicion = setInterval(this.tick_posicion, 3);
+      let timerPosicion = setInterval(this.tick_posicion, 2);
       this.setState({timerPosicion});
     }
     if (this.state.counterGeneral >= 1900) {
@@ -94,7 +95,7 @@ export default class Login extends React.Component {
         });
       }
     }
-    if(this.state.opacidadLogin < 1.0){
+    if (this.state.opacidadLogin < 1.0) {
       this.setState({
         opacidadLogin: this.state.opacidadLogin + 0.1,
       });
@@ -191,10 +192,19 @@ export default class Login extends React.Component {
         {/*<Text>
           OXXOOO... {this.state.counterGeneral}...{this.state.textPosition}
         </Text>*/}
-        <View style={{top: this.state.posicionLogin+'%', position: 'absolute', opacity: this.state.opacidadLogin}}>
+        <View
+          style={{
+            top: this.state.posicionLogin + '%',
+            position: 'absolute',
+            opacity: this.state.opacidadLogin,
+          }}>
           <View>
-            <Icon name ={'mail'} size={28} color={'rgba(255,255,255,0.7)'}
-            style={[styles.iconoEmail, {top: this.state.mailPosition}]} />
+            <Icon
+              name={'mail'}
+              size={28}
+              color={'rgba(255,255,255,0.7)'}
+              style={[styles.iconoEmail, {top: this.state.mailPosition}]}
+            />
             <TextInput
               style={styles.mail}
               placeholder={'Correo electrónico'}
@@ -203,13 +213,25 @@ export default class Login extends React.Component {
             />
           </View>
           <View>
-            <Icon name ={'ios-key-outline'} size={28} color={'rgba(255,255,255,0.7)'}
-            style={[styles.iconoEmail, {top: 20}]} />
+            <Icon
+              name={'ios-key-outline'}
+              size={28}
+              color={'rgba(255,255,255,0.7)'}
+              style={[styles.iconoEmail, {top: 20}]}
+            />
             <TextInput
               style={styles.pass}
               placeholder={'Contraseña'}
               placeholderTextColor={'rgba(255,255,255,0.5)'}
               underlineColorAndroid={'rgba(255,255,255,0.0)'}
+            />
+          </View>
+          <View>
+            <Button
+              title="Iniciar Sesión"
+              style={{borderRadius: 14, width: '75%'}}
+              color={'rgba(255,255,255,0.2)'}
+              accessibilityLabel="Learn more about this purple button"
             />
           </View>
         </View>
@@ -234,8 +256,8 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height,
   },
-  iconoEmail:{ 
-    left: 35
+  iconoEmail: {
+    left: 35,
   },
   mail: {
     width: Dimensions.get('window').width - 55,

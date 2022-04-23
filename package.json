@@ -10,10 +10,12 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-native-firebase/app": "^14.7.0",
     "@react-navigation/native": "^6.0.10",
     "@react-navigation/native-stack": "^6.5.0",
     "@viro-community/react-viro": "^2.22.0",
     "lottie-react-native": "^5.0.1",
+    "node-sass": "^7.0.1",
     "react": "17.0.2",
     "react-native": "0.67.2",
     "react-native-ble-manager": "^8.0.2",
