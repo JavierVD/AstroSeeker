@@ -18,6 +18,7 @@ import {
   ViroScene,
   ViroVRSceneNavigator,
 } from '@viro-community/react-viro';
+import LottieView from 'lottie-react-native';
 
 const isPaused360 = true;
 
@@ -112,6 +113,7 @@ export default class Login extends React.Component {
   };
 
   render() {
+    const {navigate} = this.props.navigation;
     return (
       <View style={{flex: 1, backgroundColor: '#000000'}}>
         {/*<Image
@@ -232,7 +234,7 @@ export default class Login extends React.Component {
             </TouchableOpacity>
           </View>
           <View>
-            <TouchableOpacity style={styles.botonRegistrarse}>
+            <TouchableOpacity onPress={()=> navigate("Registrar")} style={styles.botonRegistrarse}>
               <Text>Registrarme</Text>
             </TouchableOpacity>
           </View>
@@ -258,7 +260,15 @@ export default class Login extends React.Component {
               <Text>Acceder con Google</Text>
             </TouchableOpacity>
           </View>
-
+          {/*<View>
+            <LottieView
+              style={styles.AnimacionHuella}
+              source={require('../res/animations/Huella.json')}
+              speed={1}
+              autoPlay
+              loop={true}
+            />
+        </View>*/}
         </View>
       </View>
     );
@@ -280,6 +290,15 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height,
+  },
+  AnimacionHuella: {
+    position: 'absolute',
+    width: 75,
+    height: 75,
+    justifyContent: 'center',
+    alignItems: 'center',
+    top: 100,
+    opacity: 0.7
   },
   iconoEmail: {
     left: 35,
