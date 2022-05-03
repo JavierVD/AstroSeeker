@@ -6,6 +6,10 @@ import Login from './Login';
 import Registrar from './Registrar';
 import Bluetooth from './Bluetooth';
 import AboutUs from './AboutUs';
+import Contact from './Contact';
+import Settings from './Settings';
+import RateUs from './RateUs';
+import Wiki from './Wiki';
 import Panel from './Panel';
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +26,10 @@ export default function Navigation() {
         <Stack.Screen name="Bluetooth" component={Bluetooth} />
         <Stack.Screen name="AboutUs" component={AboutUs} />
         <Stack.Screen name="Panel" component={Panel} />
+        <Stack.Screen name="Contact" component={Contact} />
+        <Stack.Screen name="config" component={config} />
+        <Stack.Screen name="Wiki" component={Wiki} />
+        <Stack.Screen name="RateUs" component={RateUs} />
         </Stack.Navigator>
     </NavigationContainer>
   );

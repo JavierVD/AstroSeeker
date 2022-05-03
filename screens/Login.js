@@ -238,8 +238,8 @@ export default class Login extends React.Component {
               <Text>Registrarme</Text>
             </TouchableOpacity>
           </View>
-          <View>
-            <TouchableOpacity style={styles.FacebookStyle} activeOpacity={0.5}>
+          {/*<View>
+            <TouchableOpacity onPress={()=>  onFacebookButtonPress().then(() => console.log('Signed in with Facebook!'))}style={styles.FacebookStyle} activeOpacity={0.5}>
               <Icon
                 name={'ios-logo-facebook'}
                 size={28}
@@ -259,7 +259,7 @@ export default class Login extends React.Component {
               />
               <Text>Acceder con Google</Text>
             </TouchableOpacity>
-          </View>
+          </View>*/}
           {/*<View>
             <LottieView
               style={styles.AnimacionHuella}
