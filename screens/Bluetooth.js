@@ -7,12 +7,13 @@ import {
   View,
   Dimensions,
   Button,
+  ImageBackground,
   TouchableOpacity,
   Image,
   StatusBar,
   TextInput,
 } from 'react-native';
-export default class Registrar extends React.Component {
+export default class Bluetooth extends React.Component {
   state = {
     username: '',
     name: '',
@@ -25,27 +26,36 @@ export default class Registrar extends React.Component {
   render() {
     const {navigate} = this.props.navigation;
     return (
-      <View style={{backgroundColor: 'rgba(0,0,0,0.7)', flex: 1}}>
-        <Text
-          style={{
-            position: 'absolute',
-            top: 20,
-            left: 35,
-            fontSize: 25,
-            fontFamily: 'astro',
-          }}>
-          Dispositivos
-        </Text>
-        <ImagedCardView
-          style ={{position: 'absolute', top:100, left: 35}}
-          title="HC-06-Arduino-Telescope"
-          rightSideValue="720:1"
-          subtitle="Classic Bluetooth Device"
-          backgroundColor="#ff6460"
-          source={{
-            uri: 'https://cdn4.iconfinder.com/data/icons/essential-collection/55/bluetooth-512.png',
-          }}
-        />
+      <View style={{flex: 1}}>
+        <ImageBackground source={{uri: 'https://wallpaperaccess.com/full/31394.jpg'}} style={{flex: 1, justifyContent: "center"}} resizeMode="cover">
+        <TouchableOpacity onPress={()=> navigate('AboutUs')}>
+          <Image style={{position: 'absolute', top: -400, left:15, zIndex:1, height: 30, width: 30}} source={require('../res/images/return.png')}/>
+        </TouchableOpacity>
+          <Text
+            style={{
+              position: 'absolute',
+              top: 70,
+              left: 35,
+              fontSize: 25,
+              fontFamily: 'astro',
+            }}>
+            Dispositivos
+          </Text>
+          <View style={{position: 'absolute', top: 150, left: 0}}>
+            <ImagedCardView
+              rightSideTitle="Resolución AR"
+              title="🟢 HC-06-Arduino-Telescope"
+              rightSideValue="1660:1"
+              leftSideTitle="Resolución Dec"
+              leftSideValue="540:1"
+              subtitle="Classic Bluetooth Device"
+              backgroundColor="#ff6460"
+              source={{
+                uri: 'https://cdn4.iconfinder.com/data/icons/essential-collection/55/bluetooth-512.png',
+              }}
+            />
+          </View>
+        </ImageBackground>
       </View>
     );
   }
