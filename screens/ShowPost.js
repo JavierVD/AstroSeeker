@@ -18,7 +18,7 @@ const ShowPost = ({navigation}) => {
                             }}
                         style={Estilo.TouchableFlotante}>
                         <Image
-                            source={require("./../assets/Chat.png")}
+                            source={require("../res/images/Chat.png")}
                             style={Estilo.BotonFlotante}/>
                     </TouchableOpacity>
                     
@@ -62,7 +62,7 @@ const ShowPost = ({navigation}) => {
                     }}
                     >
                     <View style = {Estilo.EstiloModal}>
-                        <Stack style = {{ padding: 4, alignItems: 'center', borderWidth: 2, borderColor: 'black', borderRadius: 20 }} direction = "column" space = {3} style = {Estilo.Caratula}>
+                        <Stack style = {[Estilo.Caratula, {padding: 4, alignItems: 'center', borderWidth: 2, borderColor: 'black', borderRadius: 20 }]} direction = "column" space = {3}>
                             
                             <Stack style = {{ alignItems: 'center', borderWidth: 2, borderColor: 'black' }} direction = "row" space = {2}>
                                 

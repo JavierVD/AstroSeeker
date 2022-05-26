@@ -11,6 +11,12 @@ import Settings from './Settings';
 import RateUs from './RateUs';
 import Wiki from './Wiki';
 import Panel from './Panel';
+import Community from './Community';
+import HowTo from './HowTo';
+import NewPost from './NewPost';
+import ShowPost from './ShowPost';
+import Dashboard from './Dashboard';
+
 const Stack = createNativeStackNavigator();
 
 export default function Navigation() {
@@ -20,16 +26,21 @@ export default function Navigation() {
         screenOptions={{
           headerShown: false,
         }}
-        initialRouteName="Panel">
+        initialRouteName="Logsin">
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Registrar" component={Registrar} />
         <Stack.Screen name="Bluetooth" component={Bluetooth} />
         <Stack.Screen name="AboutUs" component={AboutUs} />
         <Stack.Screen name="Panel" component={Panel} />
         <Stack.Screen name="Contact" component={Contact} />
-        <Stack.Screen name="config" component={config} />
+        <Stack.Screen name="Settings" component={Settings} />
         <Stack.Screen name="Wiki" component={Wiki} />
+        <Stack.Screen name = "Comm" component = { Community } />
+        <Stack.Screen name = "newPost" component = { NewPost } />
+        <Stack.Screen name = "ShowPost" component = { ShowPost } />
         <Stack.Screen name="RateUs" component={RateUs} />
+        <Stack.Screen name="HowTo" component={HowTo} />
+        <Stack.Screen name="Dashboard" component={Dashboard} />
         </Stack.Navigator>
     </NavigationContainer>
   );

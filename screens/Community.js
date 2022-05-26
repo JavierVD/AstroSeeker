@@ -92,7 +92,7 @@ const Community = ({navigation}) => {
                     onPress={()=> { navigation.navigate("newPost")}}
                     style={Estilo.TouchableFlotante}>
                     <Image
-                        source={require("./../assets/Agregar.png")}
+                        source={require("../res/images/Agregar.png")}
                         style={Estilo.BotonFlotante}/>
                 </TouchableOpacity>
                 </View>
@@ -109,7 +109,7 @@ const Community = ({navigation}) => {
                         onPress={()=> { setShowModal(!showModal) } }
                         style={Estilo.TouchableFlotante2}>
                         <Image
-                            source={require("./../assets/Question.png")}
+                            source={require("../res/images/Question.png")}
                             style={Estilo.BotonFlotante2}/>
                     
                     </TouchableOpacity>

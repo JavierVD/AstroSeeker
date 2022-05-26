@@ -1,5 +1,5 @@
-import React from "react";
-import useState from "react";
+import React,{useState} from "react";
+
 import { Alert, TextInput, Modal, FlatList, StyleSheet, Text, View, Pressable, Image } from 'react-native';
 import { Stack, Button, NativeBaseProvider, Box, Circle } from "native-base";
 
