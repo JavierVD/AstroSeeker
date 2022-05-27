@@ -16,7 +16,7 @@ import HowTo from './HowTo';
 import NewPost from './NewPost';
 import ShowPost from './ShowPost';
 import Dashboard from './Dashboard';
-
+import Login2 from './Login2';
 const Stack = createNativeStackNavigator();
 
 export default function Navigation() {
@@ -26,7 +26,7 @@ export default function Navigation() {
         screenOptions={{
           headerShown: false,
         }}
-        initialRouteName="Logsin">
+        initialRouteName="Registrar">
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Registrar" component={Registrar} />
         <Stack.Screen name="Bluetooth" component={Bluetooth} />
@@ -41,6 +41,7 @@ export default function Navigation() {
         <Stack.Screen name="RateUs" component={RateUs} />
         <Stack.Screen name="HowTo" component={HowTo} />
         <Stack.Screen name="Dashboard" component={Dashboard} />
+        <Stack.Screen name="Login2" component={Login2} />
         </Stack.Navigator>
     </NavigationContainer>
   );

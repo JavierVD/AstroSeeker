@@ -10,7 +10,10 @@ import {
   Image,
   StatusBar,
   TextInput,
+  ToastAndroid
 } from 'react-native';
+import auth from "@react-native-firebase/auth";
+
 export default class Registrar extends React.Component {
   state = {
     username: '',
@@ -21,7 +24,28 @@ export default class Registrar extends React.Component {
     passwordconf: '',
     photourl: '',
   };
-  render() {    const {navigate} = this.props.navigation; 
+  guardar = async()=>{
+      if(this.state.email === '' && this.state.password === '' && this.state.name === '') {
+        ToastAndroid.show('Requieres llenar todos los campos', ToastAndroid.SHORT);
+      } else {
+        try {
+          let response =  await auth().createUserWithEmailAndPassword(this.state.email, this.state.password);
+           if(response){
+             console.log(response)
+             this.props.navigation.navigate('Login2')
+           }
+         } catch (e) {
+           console.error(e.message);
+           if(e.message == "[auth/email-already-in-use] The email address is already in use by another account.")
+              ToastAndroid.show('Correo ya registrado', ToastAndroid.SHORT);
+            if(e.message == "[auth/weak-password] The given password is invalid. [ Password should be at least 6 characters ]")
+              ToastAndroid.show('Contraseña débil.r', ToastAndroid.SHORT);
+         }
+      }
+
+  }
+  render() {    
+    const {navigate} = this.props.navigation; 
     return (
       <View style={{backgroundColor: 'rgba(0,0,0,0.7)', flex: 1}}>
           <Text style={{position: 'absolute', top: 20, left: 35,fontSize: 25, fontFamily: 'astro',}}>Registro</Text>
@@ -34,6 +58,8 @@ export default class Registrar extends React.Component {
           />
           <TextInput
             style={styles.usernamestyle}
+            value={this.state.username}
+            onChangeText={(text) => this.setState({ username: text })}
             placeholder={'Nombre de usuario'}
             placeholderTextColor={'rgba(255,255,255,0.5)'}
             underlineColorAndroid={'rgba(255,255,255,0.0)'}
@@ -49,6 +75,8 @@ export default class Registrar extends React.Component {
           <TextInput
             style={styles.fullnamestyle}
             placeholder={'Nombre completo'}
+            value={this.state.name}
+            onChangeText={(text) => this.setState({ name: text })}
             placeholderTextColor={'rgba(255,255,255,0.5)'}
             underlineColorAndroid={'rgba(255,255,255,0.0)'}
           />
@@ -63,6 +91,8 @@ export default class Registrar extends React.Component {
           <TextInput
             style={styles.mailStile}
             placeholder={'Correo electrónico'}
+            onChangeText={(text) => this.setState({ email: text })}
+            value={this.state.email}
             placeholderTextColor={'rgba(255,255,255,0.5)'}
             underlineColorAndroid={'rgba(255,255,255,0.0)'}
           />
@@ -77,14 +107,16 @@ export default class Registrar extends React.Component {
           <TextInput
             style={styles.passwordStyle}
             placeholder={'Contraseña'}
+            onChangeText={(text) => this.setState({ password: text })}
+            value={this.state.password}
             placeholderTextColor={'rgba(255,255,255,0.5)'}
             underlineColorAndroid={'rgba(255,255,255,0.0)'}
           />
         </View>
-        <TouchableOpacity style={styles.botonRegistrarse}>
+        <TouchableOpacity onPress={()=> this.guardar()}style={styles.botonRegistrarse}>
               <Text>Registrarme</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={()=> navigate("Login")} style={styles.botonRegresar}>
+        <TouchableOpacity onPress={()=> navigate("Login2")} style={styles.botonRegresar}>
               <Text>Regresar</Text>
         </TouchableOpacity>
       </View>

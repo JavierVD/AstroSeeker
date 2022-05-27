@@ -20,12 +20,14 @@ import {
 } from '@viro-community/react-viro';
 import LottieView from 'lottie-react-native';
 import Registrar from './Registrar';
+import auth from '@react-native-firebase/auth';
+
 const isPaused360 = true;
 
-export default class Login extends React.Component {
+export default class Login2 extends React.Component {
   state = {
-    email:'',
-    password:'',
+    email: '',
+    password: '',
     registro: false,
     isPausedVideo360: true,
     timerGeneral: null,
@@ -34,85 +36,16 @@ export default class Login extends React.Component {
     timerOpacidad360: null,
     counterGeneral: 0,
     counterMovertexto: 0,
-    textPosition: 42.0,
-    textShadowIntensity: 0.0,
+    textPosition: 20.0,
+    textShadowIntensity: 1.0,
     opacidadSplash: 1.0,
     mailPosition: 40,
-    opacidadLogin: 0.0,
-    opacidad360: 0.0,
+    opacidadLogin: 1.0,
+    opacidad360: 1.0,
     view360: 0,
     posicionLogin: 45,
-    opacidadlogin: 0.0,
-    textColor: 'rgba(255,255,255,0.0)',
-  };
-
-  tick = () => {
-    if (this.state.counterGeneral <= 6600) {
-      this.setState({
-        counterGeneral: this.state.counterGeneral + 300,
-      });
-    } else {
-      if (this.state.counterGeneral > 6600) {
-        let timerOpacidad360 = setInterval(this.tick_brillo360, 200);
-        this.setState({timerOpacidad360});
-      }
-    }
-    if (this.state.counterGeneral >= 6600) {
-      let timerPosicion = setInterval(this.tick_posicion, 2);
-      this.setState({timerPosicion});
-    }
-    if (this.state.counterGeneral >= 1900) {
-      this.setState({
-        textColor: 'rgba(255,255,255,1)',
-      });
-    }
-    if (
-      this.state.counterGeneral >= 3600 &&
-      this.state.timerOpacidadTexto == null
-    ) {
-      let timerOpacidadTexto = setInterval(this.tick_texto, 10);
-      this.setState({timerOpacidadTexto});
-    }
-  };
-
-  tick_brillo360 = () => {
-    if (this.state.opacidadSplash > 0.0) {
-      console.log(this.state.opacidadSplash);
-      this.setState({
-        opacidadSplash: this.state.opacidadSplash - 0.1,
-      });
-    }
-  };
-
-  tick_posicion = () => {
-    if (this.state.textPosition >= 15) {
-      this.setState({
-        posicionLogin: this.state.posicionLogin + 0.02,
-      });
-      if (this.setState.textPosition <= 26) {
-        this.setState({
-          textPosition: this.state.textPosition - 0.08,
-        });
-      } else {
-        this.setState({
-          textPosition: this.state.textPosition - 0.15,
-        });
-      }
-    }
-    if (this.state.opacidadLogin < 1.0) {
-      this.setState({
-        opacidadLogin: this.state.opacidadLogin + 0.1,
-      });
-      console.log(this.state.opacidadLogin);
-    }
-  };
-
-  tick_texto = () => {
-    if (this.state.textShadowIntensity < 1) {
-      this.setState({
-        textShadowIntensity: this.state.textShadowIntensity + 0.01,
-      });
-    }
+    opacidadlogin: 1.0,
+    textColor: 'rgba(255,255,255,1.0)',
   };
   login = async()=>{
     auth()
@@ -133,11 +66,11 @@ export default class Login extends React.Component {
     console.error(error);
   });
   }
+
   render() {
     const {navigate} = this.props.navigation;
     return (
       <View style={{flex: 1, backgroundColor: '#000000'}}>
-
         <View
           style={{
             height: Dimensions.get('window').width,
@@ -183,19 +116,6 @@ export default class Login extends React.Component {
           />
         </View>
 
-        <VideoPlayer
-          source={require('../res/animations/SplashScreenRip.mp4')}
-          resizeMode={'cover'}
-          onReadyForDisplay={() => {
-            let timerGeneral = setInterval(this.tick, 300);
-            this.setState({timerGeneral});
-            this.setState({
-              isPausedVideo360: false,
-            });
-          }}
-          style={[styles.backgroundVideo, {opacity: this.state.opacidadSplash}]}
-        />
-
         <Text
           style={[
             styles.logoTexto,
@@ -223,9 +143,9 @@ export default class Login extends React.Component {
             />
             <TextInput
               style={styles.mail}
-              placeholder={'Correo electrónico'}
               value={this.state.email}
               onChangeText={(text) => this.setState({ email: text })}
+              placeholder={'Correo electrónico'}
               placeholderTextColor={'rgba(255,255,255,0.5)'}
               underlineColorAndroid={'rgba(255,255,255,0.0)'}
             />
