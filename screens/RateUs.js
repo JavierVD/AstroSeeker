@@ -1,8 +1,7 @@
-import React from 'react';
-
+import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Alert, Button, Image } from 'react-native';
-
-
+import { Card } from 'react-native-paper';
+import { Linking } from 'react-native';
 export default function Contact() {
   return (
     <View style={styles.ctcolumn}>
@@ -31,12 +30,12 @@ export default function Contact() {
         </View>
       </View>
       <View style={styles.ctrow}>
-      <View>
+      <Card>
        <Button
         title="Go to AppStore"
-        onPress={() => Alert.alert('Button has been pressed')}
+        onPress={() => Linking.openURL('https://play.google.com')}
       />
-    </View>
+    </Card>
       </View>
     </View>
   );
