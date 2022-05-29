@@ -16,7 +16,7 @@ export default class AboutUs extends React.Component {
         <StatusBar backgroundColor="black" barStyle="light-content" />
         <TouchableOpacity
           style={styles.back_button}
-          onPress={() => this.props.navigation.navigate('Dashboard')}>
+          onPress={() => this.props.navigation.navigate('Tablero')}>
           <Image
             style={styles.back_button}
             source={require('../res/images/return.png')}
