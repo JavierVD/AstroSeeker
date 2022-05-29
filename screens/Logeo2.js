@@ -52,7 +52,7 @@ export default class Login2 extends React.Component {
     .signInWithEmailAndPassword(this.state.email, this.state.password)
   .then(() => {
     console.log('Cuenta creada inicia sesion!');
-    this.props.navigation.navigate('Dashboard');
+    this.props.navigation.navigate('Tablero');
   })
   .catch(error => {
     if (error.code === 'auth/wrong-password') {
