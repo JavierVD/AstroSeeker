@@ -14,7 +14,7 @@ const HowTo = () => {
                 transparent={false}
                 visible={showModal}
                 onRequestClose={() => {
-                    Alert.alert("Hasta la proxima c:");
+                    Alert.alert("see you c:");
                     setShowModal(!showModal);
                 }}
                 >
@@ -22,12 +22,12 @@ const HowTo = () => {
                    <View style={styles.container}>
       <FlatList
         data={[
-          {key: 'Bienvenido'},
-          {key: '1.-Ir al tablero'},
-          {key: '2.-Ir a la wiki'},
-          {key: '3.-Busca un planeta'},
-          {key: 'Aprende'},
-          {key: 'No olvides calificarnos'},
+          {key: 'Welcome'},
+          {key: '1.-Go to dashboard'},
+          {key: '2.-Go to themes'},
+          {key: '3.-Push find planet'},
+          {key: 'Learn'},
+          {key: 'Dont forget rateus'},
          
         ]}
         renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
