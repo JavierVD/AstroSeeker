@@ -23,6 +23,8 @@ import Themes from './Themes';
 import Theme from './Theme';
 import Tema from './Tema';
 import Temas from './Temas';
+import Sobrenosotros from './Sobrenosotros';
+import Calificanos from './Calificanos';
 import Configuracion from './Configuracion';
 import Comunidad from './Comunidad';
 const Stack = createNativeStackNavigator();
@@ -59,6 +61,8 @@ export default function Navigation() {
             <Stack.Screen name="Tablero" component={Tablero}/>
               <Stack.Screen name="Community" component={Community}/>
                  <Stack.Screen name="Comunidad" component={Comunidad}/>
+                         <Stack.Screen name="Calificanos" component={Calificanos}/>
+                 <Stack.Screen name="Sobrenosotros" component={Sobrenosotros}/>
         </Stack.Navigator>
     </NavigationContainer>
   );
