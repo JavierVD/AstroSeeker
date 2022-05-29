@@ -20,6 +20,7 @@ import Tablero from './Tablero';
 import Login2 from './Login2';
 import IndexThemes from './Themes';
 import Theme from './Theme';
+import Configuracion from './Configuracion';
 const Stack = createNativeStackNavigator();
 
 export default function Navigation() {
@@ -47,6 +48,7 @@ export default function Navigation() {
         <Stack.Screen name="Login2" component={Login2} />
         <Stack.Screen name="IndexThemes" component={IndexThemes}/>
         <Stack.Screen name="Theme" component={Theme}/>
+           <Stack.Screen name="Configuracion" component={Configuracion}/>
             <Stack.Screen name="Tablero" component={Tablero}/>
         </Stack.Navigator>
     </NavigationContainer>
