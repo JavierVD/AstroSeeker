@@ -17,7 +17,7 @@ const Dashboard = ({ navigation }) => {
                     transparent={false}
                     visible={showModal}
                     onRequestClose={() => {
-                        Alert.alert("Hasta la proxima c:");
+                        Alert.alert("See you c:");
                         setShowModal(!showModal);
                     }}
                     >
