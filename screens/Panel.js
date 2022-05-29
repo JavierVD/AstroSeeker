@@ -34,7 +34,7 @@ export default class Panel extends React.Component {
           source={{uri: 'https://cdn.wallpapersafari.com/59/28/mCKeyn.jpg'}}
           style={{flex: 1, justifyContent: 'center'}}
           resizeMode="cover">
-          <TouchableOpacity onPress={() => navigate('AboutUs')}>
+          <TouchableOpacity onPress={() => navigate('Sobrenosotros')}>
             <Image
               style={{
                 position: 'absolute',
