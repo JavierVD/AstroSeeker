@@ -32,7 +32,7 @@ export default class Registrar extends React.Component {
           let response =  await auth().createUserWithEmailAndPassword(this.state.email, this.state.password);
            if(response){
              console.log(response)
-             this.props.navigation.navigate('Login2')
+             this.props.navigation.navigate('Logeo2')
            }
          } catch (e) {
            console.error(e.message);
@@ -116,7 +116,7 @@ export default class Registrar extends React.Component {
         <TouchableOpacity onPress={()=> this.guardar()}style={styles.botonRegistrarse}>
               <Text>Registrarme</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={()=> navigate("Login2")} style={styles.botonRegresar}>
+        <TouchableOpacity onPress={()=> navigate("Logeo2")} style={styles.botonRegresar}>
               <Text>Regresar</Text>
         </TouchableOpacity>
       </View>
