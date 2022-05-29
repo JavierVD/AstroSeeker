@@ -85,7 +85,7 @@ const Dashboard = ({ navigation }) => {
                     <Stack padding = {4} space = {4} direction = "column">
                         
                         <Button onPress = { () => { navigation.navigate("Wiki") } } style = {{color: "black",width: 300,height: 60,borderColor: 'blue',borderWidth: 2,borderRadius: 100,backgroundColor: "black"}}>Mapa Estelar y Wiki</Button>
-                        <Button onPress = { () => { navigation.navigate("Panel") } } style = {{color: "black",width: 300,height: 60,borderColor: 'blue',borderWidth: 2,borderRadius: 100,backgroundColor: "black"}}>Panel de control</Button>
+                        <Button onPress = { () => { navigation.navigate("Panelin") } } style = {{color: "black",width: 300,height: 60,borderColor: 'blue',borderWidth: 2,borderRadius: 100,backgroundColor: "black"}}>Panel de control</Button>
                         <Button onPress = { () => { navigation.navigate("Community") } } style = {{color: "black",width: 300,height: 60,borderColor: 'blue',borderWidth: 2,borderRadius: 100,backgroundColor: "black"}}>Comunidad</Button>
                         <Button onPress = { () => { navigation.navigate("RateUs") } } style = {{color: "black",width: 300,height: 60,borderColor: 'blue',borderWidth: 2,borderRadius: 100,backgroundColor: "black"}}>Califícanos</Button>
                         <Button onPress = { () => { navigation.navigate("AboutUs") } } style = {{color: "black",width: 300,height: 60,borderColor: 'blue',borderWidth: 2,borderRadius: 100,backgroundColor: "black"}}>Acerca de</Button>
