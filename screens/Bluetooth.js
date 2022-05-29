@@ -28,7 +28,7 @@ export default class Bluetooth extends React.Component {
     return (
       <View style={{flex: 1}}>
         <ImageBackground source={{uri: 'https://wallpaperaccess.com/full/31394.jpg'}} style={{flex: 1, justifyContent: "center"}} resizeMode="cover">
-        <TouchableOpacity onPress={()=> navigate('AboutUs')}>
+        <TouchableOpacity onPress={()=> navigate('Sobrenosotros')}>
           <Image style={{position: 'absolute', top: -400, left:15, zIndex:1, height: 30, width: 30}} source={require('../res/images/return.png')}/>
         </TouchableOpacity>
           <Text
