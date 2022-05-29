@@ -27,6 +27,8 @@ import Sobrenosotros from './Sobrenosotros';
 import Calificanos from './Calificanos';
 import Configuracion from './Configuracion';
 import Comunidad from './Comunidad';
+import Tutorial from './Tutorial';
+import Bluetoothingles from './Bluetoothingles';
 const Stack = createNativeStackNavigator();
 
 export default function Navigation() {
@@ -40,6 +42,7 @@ export default function Navigation() {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Registrar" component={Registrar} />
         <Stack.Screen name="Bluetooth" component={Bluetooth} />
+                  <Stack.Screen name="Bluetoothingles" component={Bluetoothingles} />
         <Stack.Screen name="AboutUs" component={AboutUs} />
         <Stack.Screen name="Panel" component={Panel} />
               <Stack.Screen name="Panelin" component={Panelin} />
@@ -63,6 +66,7 @@ export default function Navigation() {
                  <Stack.Screen name="Comunidad" component={Comunidad}/>
                          <Stack.Screen name="Calificanos" component={Calificanos}/>
                  <Stack.Screen name="Sobrenosotros" component={Sobrenosotros}/>
+                        <Stack.Screen name="Tutorial" component={Tutorial}/>
         </Stack.Navigator>
     </NavigationContainer>
   );
