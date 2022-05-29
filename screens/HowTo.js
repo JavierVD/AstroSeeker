@@ -19,8 +19,20 @@ const HowTo = () => {
                 }}
                 >
                 <View>
-                    <Text>Bienvenido</Text>
-                    <Text>AQUI SE MUESTRAN LAS DIFERENTES INSTRUCCIONES PARA MANEJAR LA APLICACION")</Text>
+                   <View style={styles.container}>
+      <FlatList
+        data={[
+          {key: 'Bienvenido'},
+          {key: '1.-Ir al tablero'},
+          {key: '2.-Ir a la wiki'},
+          {key: '3.-Busca un planeta'},
+          {key: 'Aprende'},
+          {key: 'No olvides calificarnos'},
+         
+        ]}
+        renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
+      />
+    </View>
                     <Button>{"<-"}</Button>
                     <Button>X</Button>
                     <Button>{"->"}</Button>
