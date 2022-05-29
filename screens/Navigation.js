@@ -19,7 +19,7 @@ import ShowPost from './ShowPost';
 import Dashboard from './Dashboard';
 import Tablero from './Tablero';
 import Login2 from './Login2';
-import IndexThemes from './Themes';
+import Themes from './Themes';
 import Theme from './Theme';
 import Configuracion from './Configuracion';
 import Community from './Community';
@@ -49,7 +49,7 @@ export default function Navigation() {
         <Stack.Screen name="HowTo" component={HowTo} />
         <Stack.Screen name="Dashboard" component={Dashboard} />
         <Stack.Screen name="Login2" component={Login2} />
-        <Stack.Screen name="IndexThemes" component={IndexThemes}/>
+        <Stack.Screen name="Themes" component={Themes}/>
         <Stack.Screen name="Theme" component={Theme}/>
            <Stack.Screen name="Configuracion" component={Configuracion}/>
             <Stack.Screen name="Tablero" component={Tablero}/>
