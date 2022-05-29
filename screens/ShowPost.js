@@ -57,7 +57,7 @@ const ShowPost = ({navigation}) => {
                     transparent={false}
                     visible={showModal}
                     onRequestClose={() => {
-                    Alert.alert("Hasta la proxima c:");
+                    Alert.alert("See you c:");
                         setShowModal(!showModal);
                     }}
                     >
@@ -71,23 +71,23 @@ const ShowPost = ({navigation}) => {
                                     <Text style = {Estilo.NombreAutor}>Autor</Text>
                                     </Stack>
 
-                                    <Text>Comentario</Text>
+                                    <Text>Comments</Text>
 
                                     </Stack>
                             <Stack direction = "row" space = {2}>
                                 
-                                <TextInput editable maxLength={200}>Deja tu opinion</TextInput>
+                                <TextInput editable maxLength={200}>leave your opinion</TextInput>
 
                                 <Button onPress = { () => {
-                                    Alert.alert("Comentario publicado");  
-                                    }  }>Enviar</Button>
+                                    Alert.alert("comment posted");  
+                                    }  }>Send</Button>
                                 
                                 </Stack>
                             <Button onPress = { () => {
-                                navigation.navigate("ShowPost");
+                                navigation.navigate("VerPost");
                                 setShowModal(false);
-                                console.log("Cerrar");
-                                }  }>Cerrar</Button>
+                                console.log("Close");
+                                }  }>Close</Button>
                             </Stack>
                         </View>
                     </Modal>
@@ -102,7 +102,7 @@ const ShowPost = ({navigation}) => {
                     />
 
                 <NativeBaseProvider>
-                    <Button style = {{ backgroundColor: 'blue', color: 'red' }} onPress = {() => {setShowModal(!showModal)}}>Cerrar</Button>
+                    <Button style = {{ backgroundColor: 'blue', color: 'red' }} onPress = {() => {setShowModal(!showModal)}}>Close</Button>
                     </NativeBaseProvider>
                 </View>
             
@@ -116,13 +116,13 @@ const ShowPost = ({navigation}) => {
         <NativeBaseProvider>
             <Box flex = {10} style = {Estilo.Contenedor}>
                    <Box flex = {10} style = {Estilo.Marco}>
-                        <Text style = {Estilo.Titulo}>Titulo</Text>
+                        <Text style = {Estilo.Titulo}>Title</Text>
                         <Divider style = {Estilo.Divider}/>
-                        <Text style = {Estilo.Texto}>Aqui se presentan los parrafos (Contenido) almacenado en Firebase, una vez que ya se ha guardado por parte del usuario</Text>
+                        <Text style = {Estilo.Texto}>Here are the paragraphs (Contenido) stored in Firebase, once it has already been saved by the user</Text>
                         <Image style = { { height: 300, width: 300, borderWidth: 1, borderColor: 'blue', borderRadius: 25 } } alt = "Imagen No Disponible"/>
-                        <Text style = {Estilo.Texto}>Estos post manejaran Tags referente a los temas de interes, e imagenes ilustrativas</Text>
+                        <Text style = {Estilo.Texto}>These post will handle Tags referring to the topics of interest, and illustrative images</Text>
                         <Divider style = {Estilo.Divider}/>
-                        <Text style = {Estilo.Titulo}>Creado por Javier</Text>
+                        <Text style = {Estilo.Titulo}>Created by Javier</Text>
                         <Image alt = "Foto" style = {{borderColor: 'black', borderWidth: 2, borderRadius: 60, width: 60, height: 60}}></Image>
                         </Box>
                     <BotonFlotante/>
