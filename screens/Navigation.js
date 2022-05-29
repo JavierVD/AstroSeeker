@@ -11,6 +11,7 @@ import Settings from './Settings';
 import RateUs from './RateUs';
 import Wiki from './Wiki';
 import Panel from './Panel';
+import Panelin from './Panelin';
 import Community from './Community';
 import HowTo from './HowTo';
 import NewPost from './NewPost';
@@ -37,6 +38,7 @@ export default function Navigation() {
         <Stack.Screen name="Bluetooth" component={Bluetooth} />
         <Stack.Screen name="AboutUs" component={AboutUs} />
         <Stack.Screen name="Panel" component={Panel} />
+              <Stack.Screen name="Panelin" component={Panelin} />
         <Stack.Screen name="Contact" component={Contact} />
         <Stack.Screen name="Settings" component={Settings} />
         <Stack.Screen name="Wiki" component={Wiki} />
