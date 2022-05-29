@@ -22,8 +22,8 @@ const Dashboard = ({ navigation }) => {
                     }}
                     >
                     <View style = {{alignItems: 'center', padding: 22, margin: 5}}>
-                    <Text style = {{alignItems: 'center', padding: 22, margin: 5}}>Welcome</Text>
-                        <Text style = {{alignItems: 'center', padding: 22, margin: 5}}>Here are the different instructions to use the Aplicacion </Text>
+                        <Text style = {{alignItems: 'center', padding: 22, margin: 5}}>Bienvenido</Text>
+                        <Text style = {{alignItems: 'center', padding: 22, margin: 5}}>AQUI SE MUESTRAN LAS DIFERENTES INSTRUCCIONES PARA MANEJAR LA APLICACION")</Text>
                         <Stack space = {3} direction = 'row'>
                             <Button style = {{ width: 100}}>{"<-"}</Button>
                             <Button onPress = { () => setShowModal(!showModal) } style = {{ width: 100}}>X</Button>
@@ -78,7 +78,7 @@ const Dashboard = ({ navigation }) => {
                         </Stack>
                     </Box>
                 <Box flex={10} style={Estilo.Marco}>
-                    <Text style={Estilo.Titulo}>Welcome, User X</Text>
+                    <Text style={Estilo.Titulo}>Bienvenido, Usuario X</Text>
                     <Image alt = "Foto" style = {{borderColor: 'black', borderWidth: 2, borderRadius: 60, width: 80, height: 80}}></Image>
                     <Divider style={Estilo.Divider} />
                     

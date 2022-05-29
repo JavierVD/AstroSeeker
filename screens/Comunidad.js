@@ -45,13 +45,13 @@ const Community = ({navigation}) => {
                     transparent={false}
                     visible={showModal}
                     onRequestClose={() => {
-                        Alert.alert("See you c:");
+                        Alert.alert("Hasta la proxima c:");
                         setShowModal(!showModal);
                     }}
                     >
                     <View style = {{alignItems: 'center', padding: 22, margin: 5}}>
-                        <Text style = {{alignItems: 'center', padding: 22, margin: 5}}>Welcome</Text>
-                        <Text style = {{alignItems: 'center', padding: 22, margin: 5}}>Here are the different instructions to use the Aplicacion </Text>
+                        <Text style = {{alignItems: 'center', padding: 22, margin: 5}}>Bienvenido</Text>
+                        <Text style = {{alignItems: 'center', padding: 22, margin: 5}}>AQUI SE MUESTRAN LAS DIFERENTES INSTRUCCIONES PARA MANEJAR LA APLICACION")</Text>
                         <Stack space = {3} direction = 'row'>
                             <Button style = {{ width: 100}}>{"<-"}</Button>
                             <Button style = {{ width: 100}}>X</Button>
@@ -69,14 +69,14 @@ const Community = ({navigation}) => {
             <View style = {Estilo.Marco}>
                 <Stack direction = "column" space = {2} style = {Estilo.Caratula}>
                     <Pressable style = {{height: Estilo.Titulo.height, width: Estilo.Titulo.width}} onPress = {()=> { navigation.navigate("ShowPost") }}>
-                        <Text style = {Estilo.Titulo}>Topic</Text>
+                        <Text style = {Estilo.Titulo}>Tema</Text>
                         </Pressable>
                     <Stack direction = "row" space = {2} style = {Estilo.Caratula2}>
                         <Stack direction = "row" space = {2} style = {Estilo.Caratula3}>
                             <Image alt = "Foto" style = {{borderColor: 'black', borderWidth: 2, borderRadius: 20, width: 45, height: 45}}></Image>
                             <Text style = {Estilo.Texto}>Autor</Text>
                             </Stack>
-                        <Button style = {Estilo.BotonEstilo} onPress = {() => navigation.navigate("How")}>Follow</Button>
+                        <Button style = {Estilo.BotonEstilo} onPress = {() => navigation.navigate("How")}>Seguir</Button>
                         </Stack>
                     </Stack>
                 </View>

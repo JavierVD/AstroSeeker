@@ -7,7 +7,7 @@ export default function Contact() {
     <View style={styles.ctcolumn}>
       <View style={styles.ctrow}>
       <Text style={styles.paragraph}>
-        Please Rate Us!!! and You will get a gift.
+       Calificanos!!! Y obten un regalo.
       </Text>
 
       </View>
@@ -32,7 +32,7 @@ export default function Contact() {
       <View style={styles.ctrow}>
       <Card>
        <Button
-        title="Go to playstore"
+        title="Ir a la playstore "
         onPress={() => Linking.openURL('https://play.google.com')}
       />
     </Card>

@@ -118,16 +118,16 @@ export default class Login extends React.Component {
     auth()
     .signInWithEmailAndPassword(this.state.email, this.state.password)
   .then(() => {
-    console.log('User account created & signed in!');
+    console.log('Cuenta de usuario creada logeate!');
     this.props.navigation.navigate('Dashboard');
   })
   .catch(error => {
     if (error.code === 'auth/email-already-in-use') {
-      console.log('That email address is already in use!');
+      console.log('El correo de email ya esta en uso');
     }
 
     if (error.code === 'auth/invalid-email') {
-      console.log('That email address is invalid!');
+      console.log('El correo de email es invalido!');
     }
 
     console.error(error);
@@ -168,10 +168,10 @@ export default class Login extends React.Component {
                       loop={true}
                       paused={this.state.isPausedVideo360}
                       onBufferStart={() => {
-                        console.log('buf start');
+                        console.log('buf iniciado');
                       }}
                       onBufferEnd={() => {
-                        console.log('buf end');
+                        console.log('buf acabado');
                       }}
                       stereoMode={'None'}
                       onError={({nativeEvent: {error}}) => console.warn(error)}
@@ -223,7 +223,7 @@ export default class Login extends React.Component {
             />
             <TextInput
               style={styles.mail}
-              placeholder={'Email'}
+              placeholder={'Correo electrónico'}
               value={this.state.email}
               onChangeText={(text) => this.setState({ email: text })}
               placeholderTextColor={'rgba(255,255,255,0.5)'}
@@ -239,7 +239,7 @@ export default class Login extends React.Component {
             />
             <TextInput
               style={styles.pass}
-              placeholder={'Password'}
+              placeholder={'Contraseña'}
               value={this.state.password}
               onChangeText={(text) => this.setState({ password: text })}
               placeholderTextColor={'rgba(255,255,255,0.5)'}
@@ -258,7 +258,7 @@ export default class Login extends React.Component {
             </TouchableOpacity>
           </View>
           <View>
-            <TouchableOpacity onPress={()=>  onFacebookButtonPress().then(() => console.log('Signed in with Facebook!'))}style={styles.FacebookStyle} activeOpacity={0.5}>
+            <TouchableOpacity onPress={()=>  onFacebookButtonPress().then(() => console.log('Iniciando con Facebook!'))}style={styles.FacebookStyle} activeOpacity={0.5}>
               <Icon
                 name={'ios-logo-facebook'}
                 size={28}
@@ -276,7 +276,7 @@ export default class Login extends React.Component {
                 color={'rgba(0,0,0,0.7)'}
                 style={{top: 0}}
               />
-              <Text>login whit google</Text>
+              <Text>Acceder con Google</Text>
             </TouchableOpacity>
           </View>
           {/*<View>

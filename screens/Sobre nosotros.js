@@ -36,8 +36,8 @@ export default class AboutUs extends React.Component {
           autoPlay
           loop
         />
-        <Text style={styles.textacercade}>About us</Text>
-        <Text style={styles.textnormal}>AstroSeeker Beta 1.0 by Team 3</Text>
+        <Text style={styles.textacercade}>Acerca de</Text>
+        <Text style={styles.textnormal}>AstroSeeker Beta 1.0 por el team 3</Text>
       </View>
     );
   }

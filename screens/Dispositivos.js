@@ -42,7 +42,7 @@ export default class Devices extends React.Component {
       };
       
       handleStopScan = () => {
-        console.log('Scan is stopped. Devices: ', this.state.peripherals);
+        console.log('Se ha detenido el escaneo: ', this.state.peripherals);
     }
     render() {
     
@@ -52,8 +52,8 @@ export default class Devices extends React.Component {
             <TouchableOpacity style={styles.back_button} onPress={()=>{alert("you clicked me")}}>
             <Image style={styles.back_button} source={require("../res/images/return.png")}/>
             </TouchableOpacity>
-            <Text style = {styles.textacercade}>About us</Text>     
-            <Text style = {styles.textnormal}>AstroSeeker Beta 1.0 by Team 3</Text>  
+            <Text style = {styles.textacercade}>Acerca de</Text>     
+            <Text style = {styles.textnormal}>AstroSeeker Beta 1.0 por el equipo 3</Text>  
         </View>
         );
     }

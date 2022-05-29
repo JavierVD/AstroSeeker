@@ -26,7 +26,7 @@ export default class Registrar extends React.Component {
   };
   guardar = async()=>{
       if(this.state.email === '' && this.state.password === '' && this.state.name === '') {
-        ToastAndroid.show('Requieres llenar todos los campos', ToastAndroid.SHORT);
+        ToastAndroid.show('You need to fill all the fields', ToastAndroid.SHORT);
       } else {
         try {
           let response =  await auth().createUserWithEmailAndPassword(this.state.email, this.state.password);
@@ -36,10 +36,10 @@ export default class Registrar extends React.Component {
            }
          } catch (e) {
            console.error(e.message);
-           if(e.message == "[auth/email-already-in-use] Correo ya registrado.")
-              ToastAndroid.show('Correo ya registrado', ToastAndroid.SHORT);
-            if(e.message == "[auth/weak-password] Contraseña débil. [ Password should be at least 6 characters ]")
-              ToastAndroid.show('Contraseña débil', ToastAndroid.SHORT);
+           if(e.message == "[auth/email-already-in-use] The email address is already in use by another account.")
+              ToastAndroid.show('The email address is already in use', ToastAndroid.SHORT);
+            if(e.message == "[auth/weak-password] The given password is invalid. [ Password should be at least 6 characters ]")
+              ToastAndroid.show('password is invalid', ToastAndroid.SHORT);
          }
       }
 
@@ -48,7 +48,7 @@ export default class Registrar extends React.Component {
     const {navigate} = this.props.navigation; 
     return (
       <View style={{backgroundColor: 'rgba(0,0,0,0.7)', flex: 1}}>
-          <Text style={{position: 'absolute', top: 20, left: 35,fontSize: 25, fontFamily: 'astro',}}>Registro</Text>
+          <Text style={{position: 'absolute', top: 20, left: 35,fontSize: 25, fontFamily: 'astro',}}>Register</Text>
         <View>
           <Icon
             name={'planet'}
@@ -60,7 +60,7 @@ export default class Registrar extends React.Component {
             style={styles.usernamestyle}
             value={this.state.username}
             onChangeText={(text) => this.setState({ username: text })}
-            placeholder={'Nombre de usuario'}
+            placeholder={'User'}
             placeholderTextColor={'rgba(255,255,255,0.5)'}
             underlineColorAndroid={'rgba(255,255,255,0.0)'}
           />
@@ -74,7 +74,7 @@ export default class Registrar extends React.Component {
           />
           <TextInput
             style={styles.fullnamestyle}
-            placeholder={'Nombre completo'}
+            placeholder={'Full name'}
             value={this.state.name}
             onChangeText={(text) => this.setState({ name: text })}
             placeholderTextColor={'rgba(255,255,255,0.5)'}
@@ -90,7 +90,7 @@ export default class Registrar extends React.Component {
           />
           <TextInput
             style={styles.mailStile}
-            placeholder={'Correo electrónico'}
+            placeholder={'Email'}
             onChangeText={(text) => this.setState({ email: text })}
             value={this.state.email}
             placeholderTextColor={'rgba(255,255,255,0.5)'}
@@ -106,7 +106,7 @@ export default class Registrar extends React.Component {
           />
           <TextInput
             style={styles.passwordStyle}
-            placeholder={'Contraseña'}
+            placeholder={'Password'}
             onChangeText={(text) => this.setState({ password: text })}
             value={this.state.password}
             placeholderTextColor={'rgba(255,255,255,0.5)'}
@@ -114,10 +114,10 @@ export default class Registrar extends React.Component {
           />
         </View>
         <TouchableOpacity onPress={()=> this.guardar()}style={styles.botonRegistrarse}>
-              <Text>Registrarme</Text>
+              <Text>Register</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={()=> navigate("Login2")} style={styles.botonRegresar}>
-              <Text>Regresar</Text>
+              <Text>Back</Text>
         </TouchableOpacity>
       </View>
     );

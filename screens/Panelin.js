@@ -55,7 +55,7 @@ export default class Panel extends React.Component {
               fontSize: 18,
               fontFamily: 'astro',
             }}>
-            Panel de control
+            Control panel
           </Text>
           <View style={{position: 'absolute', top: 150, left: 0}}>
             <ImagedCardView
@@ -82,7 +82,7 @@ export default class Panel extends React.Component {
                 borderRadius: 10,
                 alignItems: 'center',
               }}>
-              <Text style={{color: 'white', fontSize: 18}}>Ir a</Text>
+              <Text style={{color: 'white', fontSize: 18}}>GoTo</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={{
@@ -94,7 +94,7 @@ export default class Panel extends React.Component {
                 borderRadius: 10,
                 alignItems: 'center',
               }}>
-              <Text style={{color: 'white', fontSize: 18}}>Seguir</Text>
+              <Text style={{color: 'white', fontSize: 18}}>Track</Text>
             </TouchableOpacity>
           </View>
           <View style={{top: 140, paddingLeft: 12, paddingRight: 12}}>
@@ -107,7 +107,7 @@ export default class Panel extends React.Component {
                   autoPlay
                   loop={true}
                 />
-                <TextInput placeholder={'Buscar galaxia'} placeholderTextColor={'rgba(255,255,255,0.5)'}/>
+                <TextInput placeholder={'Find Galaxy'} placeholderTextColor={'rgba(255,255,255,0.5)'}/>
               </View>
               <View style={{flexDirection: 'row' ,borderRadius: 15, marginBottom:5, marginTop: 5,borderColor: "#FFF", backgroundColor: '#000',borderWidth: 2}}>
                 <LottieView
@@ -117,7 +117,7 @@ export default class Panel extends React.Component {
                   autoPlay
                   loop={true}
                 />
-                <TextInput placeholder={'Buscar planeta'} placeholderTextColor={'rgba(255,255,255,0.5)'}/>
+                <TextInput placeholder={'Find Planet'} placeholderTextColor={'rgba(255,255,255,0.5)'}/>
               </View>
             </View>
             <View style={{flexDirection: 'column'}}>
@@ -129,7 +129,7 @@ export default class Panel extends React.Component {
                 autoPlay
                 loop={true}
               />
-              <TextInput placeholder={'Buscar nebulosa'} placeholderTextColor={'rgba(255,255,255,0.5)'}/>
+              <TextInput placeholder={'Find Nebula'} placeholderTextColor={'rgba(255,255,255,0.5)'}/>
                 </View>
 
                 <View style={{flexDirection: 'row' ,borderRadius: 15, marginBottom:5, marginTop: 5,borderColor: "#FFF", backgroundColor: '#000',borderWidth: 2}}>
@@ -140,7 +140,7 @@ export default class Panel extends React.Component {
                 autoPlay
                 loop={true}
               />
-              <TextInput placeholder={'Buscar estrella'} placeholderTextColor={'rgba(255,255,255,0.5)'}/>
+              <TextInput placeholder={'Find Stars'} placeholderTextColor={'rgba(255,255,255,0.5)'}/>
               </View>
 
             </View>

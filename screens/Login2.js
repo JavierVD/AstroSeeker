@@ -56,7 +56,7 @@ export default class Login2 extends React.Component {
   })
   .catch(error => {
     if (error.code === 'auth/wrong-password') {
-      console.log('Contraseña incorrecta!');
+      console.log('Wrong Password!');
     }
 
     if (error.code === 'auth/invalid-email') {
@@ -145,7 +145,7 @@ export default class Login2 extends React.Component {
               style={styles.mail}
               value={this.state.email}
               onChangeText={(text) => this.setState({ email: text })}
-              placeholder={'Correo electrónico'}
+              placeholder={'Email'}
               placeholderTextColor={'rgba(255,255,255,0.5)'}
               underlineColorAndroid={'rgba(255,255,255,0.0)'}
             />
@@ -159,7 +159,7 @@ export default class Login2 extends React.Component {
             />
             <TextInput
               style={styles.pass}
-              placeholder={'Contraseña'}
+              placeholder={'Password'}
               value={this.state.password}
               onChangeText={(text) => this.setState({ password: text })}
               placeholderTextColor={'rgba(255,255,255,0.5)'}
@@ -185,7 +185,7 @@ export default class Login2 extends React.Component {
                 color={'rgba(255,255,255,0.7)'}
                 style={{top: 0}}
               />
-              <Text>Acceder con Facebook</Text>
+              <Text>join with Facebook</Text>
             </TouchableOpacity>
           </View>
           <View>
@@ -196,7 +196,7 @@ export default class Login2 extends React.Component {
                 color={'rgba(0,0,0,0.7)'}
                 style={{top: 0}}
               />
-              <Text>Acceder con Google</Text>
+              <Text>join with Google</Text>
             </TouchableOpacity>
           </View>
           {/*<View>
