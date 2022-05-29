@@ -68,7 +68,7 @@ const Community = ({navigation}) => {
         return (
             <View style = {Estilo.Marco}>
                 <Stack direction = "column" space = {2} style = {Estilo.Caratula}>
-                    <Pressable style = {{height: Estilo.Titulo.height, width: Estilo.Titulo.width}} onPress = {()=> { navigation.navigate("ShowPost") }}>
+                    <Pressable style = {{height: Estilo.Titulo.height, width: Estilo.Titulo.width}} onPress = {()=> { navigation.navigate("VerPost") }}>
                         <Text style = {Estilo.Titulo}>Tema</Text>
                         </Pressable>
                     <Stack direction = "row" space = {2} style = {Estilo.Caratula2}>
@@ -89,7 +89,7 @@ const Community = ({navigation}) => {
             <View>
                 <TouchableOpacity
                     activeOpacity={0.7}
-                    onPress={()=> { navigation.navigate("newPost")}}
+                    onPress={()=> { navigation.navigate("NuevoPost")}}
                     style={Estilo.TouchableFlotante}>
                     <Image
                         source={require("../res/images/Agregar.png")}
@@ -126,7 +126,7 @@ const Community = ({navigation}) => {
                     renderItem={Topicos}
                     style = {{height: 100}}/>
                 </Box>
-                <Pressable onPress = {()=> { navigation.navigate("newPost")}}>
+                <Pressable onPress = {()=> { navigation.navigate("NuevoPost")}}>
                     
                     </Pressable>
                 <HowTo/>
