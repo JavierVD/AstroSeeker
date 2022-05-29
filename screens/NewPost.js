@@ -9,28 +9,28 @@ const NewPost = ({navigation}) => {
                 <Box>
                     <Stack direction = "column" space = {4} style = {Estilo.Contenedor}> 
                         <Stack style = {Estilo.BordeExterior} direction = "column" space = {2}>
-                            <Text style = {Estilo.Titulo}>Topico:</Text>
-                            <TextInput style = {Estilo.Inputs} editable maxLength={40} >Topico</TextInput>
+                            <Text style = {Estilo.Titulo}>Topic:</Text>
+                            <TextInput style = {Estilo.Inputs} editable maxLength={40} >Topic</TextInput>
                             </Stack>
                         <Stack style = {Estilo.BordeExterior} direction = "column" space = {2}>
-                            <Text style = {Estilo.Titulo}>Descripcion:</Text>
-                            <TextInput multiline style = {Estilo.Inputs} editable maxLength={300} >Descripcion del Topico</TextInput>
+                            <Text style = {Estilo.Titulo}>Description:</Text>
+                            <TextInput multiline style = {Estilo.Inputs} editable maxLength={300} >Description of the topic</TextInput>
                             </Stack>
                         <Stack style = {Estilo.BordeExterior} direction = "column" space = {2}>    
                             <Text style = {Estilo.Titulo}>Tags:</Text>
                             <TextInput style = {Estilo.Inputs} editable maxLength={40} >Tags</TextInput>
                             </Stack>
-                        <Button style = {Estilo.BotonAceptar} onPress = {() => {Alert.alert("Guardado","¿Seguro que deseas guardar?", 
+                        <Button style = {Estilo.BotonAceptar} onPress = {() => {Alert.alert("save","¿Are you sure?", 
                             [
                                 {
                                     text: "No",
-                                    onPress: () => console.log("Cancelado")
+                                    onPress: () => console.log("Canceled")
                                     },
                                 { 
-                                    text: "Si", 
-                                    onPress: () => console.log("En Proceso") 
+                                    text: "Yes", 
+                                    onPress: () => console.log("Working") 
                                     }
-                                ])}}>Publicar</Button>
+                                ])}}>Publish</Button>
                         </Stack>
                     </Box>
               
