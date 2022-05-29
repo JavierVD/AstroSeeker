@@ -16,6 +16,8 @@ import Community from './Community';
 import HowTo from './HowTo';
 import NewPost from './NewPost';
 import ShowPost from './ShowPost';
+import NuevoPost from './NuevoPost';
+import VerPost from './VerPost';
 import Dashboard from './Dashboard';
 import Tablero from './Tablero';
 import Login2 from './Login2';
@@ -52,6 +54,8 @@ export default function Navigation() {
         <Stack.Screen name = "Comm" component = { Community } />
         <Stack.Screen name = "newPost" component = { NewPost } />
         <Stack.Screen name = "ShowPost" component = { ShowPost } />
+           <Stack.Screen name = "NuevoPost" component = { NuevoPost } />
+        <Stack.Screen name = "VerPost" component = { VerPost } />
         <Stack.Screen name="RateUs" component={RateUs} />
         <Stack.Screen name="HowTo" component={HowTo} />
         <Stack.Screen name="Dashboard" component={Dashboard} />
