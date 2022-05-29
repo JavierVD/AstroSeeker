@@ -5,7 +5,7 @@ import { collection, addDoc, doc, setDoc, getDocFromServer } from 'firebase/fire
 import db from '../database/firebase';
 import { getFirestore, getDocs, snapshotEqual } from 'firebase/firestore'
 
-const Themes = ({ navigation }) => {
+const Temas = ({ navigation }) => {
 
     const [temas, setTemas] = useState()
 
@@ -175,4 +175,4 @@ const Estilo = StyleSheet.create({
 
 
 
-export default Themes;
+export default Temas;
