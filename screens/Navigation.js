@@ -21,8 +21,10 @@ import Tablero from './Tablero';
 import Login2 from './Login2';
 import Themes from './Themes';
 import Theme from './Theme';
+import Tema from './Tema';
+import Temas from './Temas';
 import Configuracion from './Configuracion';
-import Community from './Community';
+import Comunidad from './Comunidad';
 const Stack = createNativeStackNavigator();
 
 export default function Navigation() {
@@ -51,9 +53,12 @@ export default function Navigation() {
         <Stack.Screen name="Login2" component={Login2} />
         <Stack.Screen name="Themes" component={Themes}/>
         <Stack.Screen name="Theme" component={Theme}/>
+           <Stack.Screen name="Temas" component={Temas}/>
+        <Stack.Screen name="Tema" component={Tema}/>
            <Stack.Screen name="Configuracion" component={Configuracion}/>
             <Stack.Screen name="Tablero" component={Tablero}/>
               <Stack.Screen name="Community" component={Community}/>
+                 <Stack.Screen name="Comunidad" component={Comunidad}/>
         </Stack.Navigator>
     </NavigationContainer>
   );
