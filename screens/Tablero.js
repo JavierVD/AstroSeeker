@@ -23,7 +23,7 @@ const Dashboard = ({ navigation }) => {
                     >
                     <View style = {{alignItems: 'center', padding: 22, margin: 5}}>
                         <Text style = {{alignItems: 'center', padding: 22, margin: 5}}>Bienvenido</Text>
-                        <Text style = {{alignItems: 'center', padding: 22, margin: 5}}>AQUI SE MUESTRAN LAS DIFERENTES INSTRUCCIONES PARA MANEJAR LA APLICACION")</Text>
+                     
                         <Stack space = {3} direction = 'row'>
                             <Button style = {{ width: 100}}>{"<-"}</Button>
                             <Button onPress = { () => setShowModal(!showModal) } style = {{ width: 100}}>X</Button>
@@ -41,7 +41,7 @@ const Dashboard = ({ navigation }) => {
                 <View>
                     <TouchableOpacity
                         activeOpacity={0.7}
-                        onPress={()=> { navigation.navigate("HowTo") } }
+                        onPress={()=> { navigation.navigate("Tutorial") } }
                         style={Estilo.TouchableFlotante}>
                         <Image
                             source={require("../res/images/Question.png")}
