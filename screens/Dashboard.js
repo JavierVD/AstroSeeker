@@ -60,7 +60,7 @@ const Dashboard = ({ navigation }) => {
                     <Stack direction = "row" space = {2}>
                     <TouchableOpacity
                         activeOpacity={0.7}
-                        onPress={()=> { navigation.navigate("Bluetooth") } }
+                        onPress={()=> { navigation.navigate("Bluetoothingles") } }
                         style={{height: 30, width: 30, top: 10,left: 310, justifyContent: "center"}}>
                         <Image
                             source={require("../res/images/bluetooth.png")}
