@@ -17,6 +17,8 @@ import NewPost from './NewPost';
 import ShowPost from './ShowPost';
 import Dashboard from './Dashboard';
 import Login2 from './Login2';
+import IndexThemes from './Themes';
+import Theme from './Theme';
 const Stack = createNativeStackNavigator();
 
 export default function Navigation() {
@@ -42,6 +44,8 @@ export default function Navigation() {
         <Stack.Screen name="HowTo" component={HowTo} />
         <Stack.Screen name="Dashboard" component={Dashboard} />
         <Stack.Screen name="Login2" component={Login2} />
+        <Stack.Screen name="IndexThemes" component={IndexThemes}/>
+        <Stack.Screen name="Theme" component={Theme}/>
         </Stack.Navigator>
     </NavigationContainer>
   );
