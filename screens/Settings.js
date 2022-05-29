@@ -47,7 +47,7 @@ export default function Settings() {
                         <RadioButton
                         value="first"
                         status={ checked === 'first' ? 'checked' : 'unchecked' }
-                        onPress={() => setChecked('first')}
+                        onPress={() => navigation.navigate("Configuracion")}
                 />
                 <Image width={25} height={25}           
                 source={{
@@ -65,7 +65,7 @@ export default function Settings() {
                         <RadioButton
                value="second"
                status={ checked === 'second' ? 'checked' : 'unchecked' }
-               onPress={() => setChecked('second')}
+               onPress={() =>{ navigation.navigate("Settings") }}
                 />
                 <Image width={25} height={25} paddingBottom="2"          
                 source={{
