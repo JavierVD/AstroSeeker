@@ -16,6 +16,7 @@ import HowTo from './HowTo';
 import NewPost from './NewPost';
 import ShowPost from './ShowPost';
 import Dashboard from './Dashboard';
+import Tablero from './Tablero';
 import Login2 from './Login2';
 import IndexThemes from './Themes';
 import Theme from './Theme';
@@ -46,6 +47,7 @@ export default function Navigation() {
         <Stack.Screen name="Login2" component={Login2} />
         <Stack.Screen name="IndexThemes" component={IndexThemes}/>
         <Stack.Screen name="Theme" component={Theme}/>
+            <Stack.Screen name="Tablero" component={Tablero}/>
         </Stack.Navigator>
     </NavigationContainer>
   );
