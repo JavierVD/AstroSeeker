@@ -173,7 +173,7 @@ export default class Login2 extends React.Component {
             </TouchableOpacity>
           </View>
           <View>
-            <TouchableOpacity onPress={()=> navigate("Registrar")} style={styles.botonRegistrarse}>
+            <TouchableOpacity onPress={()=> navigate("Register")} style={styles.botonRegistrarse}>
               <Text>Registrarme</Text>
             </TouchableOpacity>
           </View>
