@@ -24,6 +24,10 @@ target 'AstroSeeker' do
 
   pod 'RNFBAuth', :path => '../node_modules/@react-native-firebase/auth'
 
+  pod 'react-native-fbsdk-next', :path => '../node_modules/react-native-fbsdk-next'
+
+  pod 'react-native-fingerprint-scanner', :path => '../node_modules/react-native-fingerprint-scanner'
+
   target 'AstroSeekerTests' do
     inherit! :complete
     # Pods for testing

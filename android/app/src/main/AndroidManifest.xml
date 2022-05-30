@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" android:maxSdkVersion="28"/>
     <uses-permission-sdk-23 android:name="android.permission.ACCESS_FINE_LOCATION" tools:targetApi="Q"/>
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
     <!-- You may need these if doing any screen recording from within the app -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -18,7 +19,7 @@
     <!-- Usage of accelerometer and gyroscope -->
     <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="false" tools:replace="required" />
     <uses-feature android:name="android.hardware.sensor.gyroscope" android:required="false" tools:replace="required" />
-
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" tools:node="remove"/>
     <queries>
       <package android:name="com.google.ar.core" />
     </queries>
@@ -27,11 +28,14 @@
       android:name=".MainApplication"
       android:label="@string/app_name"
       android:icon="@mipmap/ic_launcher"
+
       android:usesCleartextTraffic="true"
       android:roundIcon="@mipmap/ic_launcher_round"
       android:allowBackup="false"
       android:theme="@style/AppTheme">
       <meta-data android:name="com.google.ar.core" android:value="optional" />
+      <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+      <meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_client_token"/>
       <activity
         android:name=".MainActivity"
         android:label="@string/app_name"

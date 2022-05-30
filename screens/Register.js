@@ -13,6 +13,7 @@ import {
   ToastAndroid
 } from 'react-native';
 import auth from "@react-native-firebase/auth";
+import firestore from '@react-native-firebase/firestore';
 
 export default class Registrar extends React.Component {
   state = {
@@ -31,15 +32,27 @@ export default class Registrar extends React.Component {
         try {
           let response =  await auth().createUserWithEmailAndPassword(this.state.email, this.state.password);
            if(response){
-             console.log(response)
-             this.props.navigation.navigate('Login2')
+             console.log(response);
+             const uid = response.user.uid;
+             console.log(uid);
+             const ref = firestore().collection('Usuarios');
+             await ref.add({
+              id: uid,
+              nombre: this.state.name,
+              correo: this.state.email,
+              password: this.state.password,
+              username: this.state.username,
+            });
+            this.props.navigation.navigate('Dashboard')
            }
          } catch (e) {
            console.error(e.message);
            if(e.message == "[auth/email-already-in-use] The email address is already in use by another account.")
               ToastAndroid.show('The email address is already in use', ToastAndroid.SHORT);
             if(e.message == "[auth/weak-password] The given password is invalid. [ Password should be at least 6 characters ]")
-              ToastAndroid.show('password is invalid', ToastAndroid.SHORT);
+              ToastAndroid.show('Password is invalid', ToastAndroid.SHORT);
+            if(e.message == "[auth/invalid-email] The email address is badly formatted.")
+              ToastAndroid.show('Email is invalid', ToastAndroid.SHORT);
          }
       }
 
@@ -109,6 +122,7 @@ export default class Registrar extends React.Component {
             placeholder={'Password'}
             onChangeText={(text) => this.setState({ password: text })}
             value={this.state.password}
+            secureTextEntry={true}
             placeholderTextColor={'rgba(255,255,255,0.5)'}
             underlineColorAndroid={'rgba(255,255,255,0.0)'}
           />

@@ -13,7 +13,7 @@ import {
   ToastAndroid
 } from 'react-native';
 import auth from "@react-native-firebase/auth";
-
+import firestore from '@react-native-firebase/firestore';
 export default class Registrar extends React.Component {
   state = {
     username: '',
@@ -30,15 +30,25 @@ export default class Registrar extends React.Component {
       } else {
         try {
           let response =  await auth().createUserWithEmailAndPassword(this.state.email, this.state.password);
-           if(response){
-             console.log(response)
-             this.props.navigation.navigate('Logeo2')
-           }
+          if(response){
+            console.log(response);
+            const uid = response.user.uid;
+            console.log(uid);
+            const ref = firestore().collection('Usuarios');
+            await ref.add({
+             id: uid,
+             nombre: this.state.name,
+             correo: this.state.email,
+             password: this.state.password,
+             username: this.state.username,
+           });
+           this.props.navigation.navigate('Dashboard')
+          }
          } catch (e) {
            console.error(e.message);
-           if(e.message == "[auth/email-already-in-use] Correo ya registrado.")
+           if(e.message == "[auth/email-already-in-use] The email address is already in use by another account.")
               ToastAndroid.show('Correo ya registrado', ToastAndroid.SHORT);
-            if(e.message == "[auth/weak-password] Contraseña débil. [ Password should be at least 6 characters ]")
+            if(e.message == "[auth/weak-password] The given password is invalid. [ Password should be at least 6 characters ]")
               ToastAndroid.show('Contraseña débil', ToastAndroid.SHORT);
          }
       }
@@ -107,6 +117,7 @@ export default class Registrar extends React.Component {
           <TextInput
             style={styles.passwordStyle}
             placeholder={'Contraseña'}
+            secureTextEntry={true}
             onChangeText={(text) => this.setState({ password: text })}
             value={this.state.password}
             placeholderTextColor={'rgba(255,255,255,0.5)'}

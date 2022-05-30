@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AstroSeeker</string>
+    <string name="facebook_app_id">339405981665879</string>
+    <string name="facebook_client_token">d5ce4d92acc48087910fb638f5558fa8</string>
 </resources>

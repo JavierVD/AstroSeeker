@@ -5,7 +5,7 @@ import {
 } from 'native-base';
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { RadioButton } from 'react-native-paper';
-export default function Configuracion() {
+export default function Configuracion({ navigation }) {
     const [checked, setChecked] = React.useState('first');
     return (
         <NativeBaseProvider>

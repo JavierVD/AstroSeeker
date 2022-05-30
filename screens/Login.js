@@ -19,13 +19,17 @@ import {
   ViroVRSceneNavigator,
 } from '@viro-community/react-viro';
 import LottieView from 'lottie-react-native';
-import Registrar from './Registrar';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import auth from '@react-native-firebase/auth';
+import FingerprintScanner from 'react-native-fingerprint-scanner';
+import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
 const isPaused360 = true;
 
 export default class Login extends React.Component {
   state = {
     email:'',
     password:'',
+    sihay: false,
     registro: false,
     isPausedVideo360: true,
     timerGeneral: null,
@@ -45,6 +49,58 @@ export default class Login extends React.Component {
     opacidadlogin: 0.0,
     textColor: 'rgba(255,255,255,0.0)',
   };
+  componentDidMount=()=>{
+    try{
+      var nicocado = auth().currentUser;
+      if(nicocado.uid != null)
+        this.setState({email: nicocado.email, password: nicocado.password, sihay: true})
+    }catch(e){
+      console.log(e.message);
+    }
+    
+
+  }
+
+  onFacebookButtonPress=async()=> {
+    // Attempt login with permissions
+    const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
+  
+    if (result.isCancelled) {
+      throw 'User cancelled the login process';
+    }
+  
+    // Once signed in, get the users AccesToken
+    const data = await AccessToken.getCurrentAccessToken();
+  
+    if (!data) {
+      throw 'Something went wrong obtaining access token';
+    }
+  
+    // Create a Firebase credential with the AccessToken
+    const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
+  
+    // Sign-in the user with the credential
+    return auth().signInWithCredential(facebookCredential);
+  }
+  onGoogleButtonPress=async()=> {
+    try{
+      GoogleSignin.configure({
+        webClientId: '138564536884-bklklhoojl7vkarrpm63sg9f77gkf1op.apps.googleusercontent.com',
+      });
+      // Get the users ID token
+      const { idToken } = await GoogleSignin.signIn();
+    
+      // Create a Google credential with the token
+      const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+    
+      // Sign-in the user with the credential
+      this.login();
+      return auth().signInWithCredential(googleCredential);
+    }catch(e){
+      console.log(e);
+    }
+
+  }
 
   tick = () => {
     if (this.state.counterGeneral <= 6600) {
@@ -82,6 +138,15 @@ export default class Login extends React.Component {
         opacidadSplash: this.state.opacidadSplash - 0.1,
       });
     }
+    FingerprintScanner
+      .authenticate({ description: 'Scan your fingerprint on the device scanner to continue' })
+      .then(() => {
+        this.props.handlePopupDismissed();
+        this.login();
+      })
+      .catch((error) => {
+        this.props.handlePopupDismissed();
+      });
   };
 
   tick_posicion = () => {
@@ -240,6 +305,7 @@ export default class Login extends React.Component {
             <TextInput
               style={styles.pass}
               placeholder={'Password'}
+              secureTextEntry={true}
               value={this.state.password}
               onChangeText={(text) => this.setState({ password: text })}
               placeholderTextColor={'rgba(255,255,255,0.5)'}
@@ -249,34 +315,35 @@ export default class Login extends React.Component {
           <View>
             <TouchableOpacity style={styles.botonInicio}
             onPress={()=> this.login()}>
-              <Text>Iniciar Sesión</Text>
+              <Text>LogIn</Text>
             </TouchableOpacity>
           </View>
           <View>
-            <TouchableOpacity onPress={()=> navigate("Registrar")} style={styles.botonRegistrarse}>
-              <Text>Registrarme</Text>
+            <TouchableOpacity onPress={()=> navigate("Register")} style={styles.botonRegistrarse}>
+              <Text>SignUp</Text>
             </TouchableOpacity>
           </View>
           <View>
-            <TouchableOpacity onPress={()=>  onFacebookButtonPress().then(() => console.log('Signed in with Facebook!'))}style={styles.FacebookStyle} activeOpacity={0.5}>
+            <TouchableOpacity onPress={()=>  this.onFacebookButtonPress().then(() => this.props.navigation.navigate('Dashboard'))}style={styles.FacebookStyle} activeOpacity={0.5}>
               <Icon
                 name={'ios-logo-facebook'}
                 size={28}
                 color={'rgba(255,255,255,0.7)'}
                 style={{top: 0}}
               />
-              <Text>Acceder con Facebook</Text>
+              <Text>Login with Facebook</Text>
             </TouchableOpacity>
           </View>
           <View>
-            <TouchableOpacity style={styles.GoogleStyle} activeOpacity={0.5}>
+            <TouchableOpacity style={styles.GoogleStyle} activeOpacity={0.5}
+            onPress={()=> this.onGoogleButtonPress()}>
               <Icon
                 name={'logo-google'}
                 size={28}
                 color={'rgba(0,0,0,0.7)'}
                 style={{top: 0}}
               />
-              <Text>login whit google</Text>
+              <Text>Login with Google</Text>
             </TouchableOpacity>
           </View>
           {/*<View>
