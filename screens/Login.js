@@ -24,11 +24,13 @@ import auth from '@react-native-firebase/auth';
 import FingerprintScanner from 'react-native-fingerprint-scanner';
 import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
 const isPaused360 = true;
+var SharedPreferences = require('react-native-shared-preferences');
 
 export default class Login extends React.Component {
   state = {
     email:'',
     password:'',
+    audio: 1.0,
     sihay: false,
     registro: false,
     isPausedVideo360: true,
@@ -49,11 +51,22 @@ export default class Login extends React.Component {
     opacidadlogin: 0.0,
     textColor: 'rgba(255,255,255,0.0)',
   };
+  
   componentDidMount=()=>{
     try{
+      SharedPreferences.getItem("splash", (value)=> { console.log("valuer. " + value),this.setState({audio: parseFloat (value)})})
       var nicocado = auth().currentUser;
-      if(nicocado.uid != null)
-        this.setState({email: nicocado.email, password: nicocado.password, sihay: true})
+      if(nicocado != null){
+        this.setState({email: nicocado.email, password: 'xxxxxxx', sihay: true})
+        FingerprintScanner
+        .authenticate({ description: 'Scan your fingerprint on the device scanner to continue' })
+        .then(() => {
+          this.props.navigation.navigate('Dashboard');
+        })
+        .catch((error) => {
+          console.log(error)
+        });
+      }
     }catch(e){
       console.log(e.message);
     }
@@ -138,15 +151,8 @@ export default class Login extends React.Component {
         opacidadSplash: this.state.opacidadSplash - 0.1,
       });
     }
-    FingerprintScanner
-      .authenticate({ description: 'Scan your fingerprint on the device scanner to continue' })
-      .then(() => {
-        this.props.handlePopupDismissed();
-        this.login();
-      })
-      .catch((error) => {
-        this.props.handlePopupDismissed();
-      });
+
+
   };
 
   tick_posicion = () => {
@@ -232,6 +238,7 @@ export default class Login extends React.Component {
                       source={require('../res/animations/back360.mp4')}
                       loop={true}
                       paused={this.state.isPausedVideo360}
+                      volume={this.state.audio}
                       onBufferStart={() => {
                         console.log('buf start');
                       }}

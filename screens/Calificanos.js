@@ -69,7 +69,7 @@ const RateUs = ({ navigation }) => {
                         </Stack>
                         <Box width={"lg"} bgColor={"white"}>
                             <AspectRatio w="100%" ratio={16 / 9}>
-                            <Image source={require('../assets/starfall.gif')}  onPress={() => Linking.openURL('https://play.google.com')} alt="Image"/>
+                            <Image source={require('../assets/star.png')}  onPress={() => Linking.openURL('https://play.google.com')} alt="Image"/>
                             </AspectRatio>
                         </Box>
                     </Box>

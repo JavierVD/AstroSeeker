@@ -82,7 +82,7 @@ export default class Calibrar extends React.Component {
 
   }
 
-  render() {
+  render(){
     return (
       <View style={styles.container}>
         <TouchableOpacity

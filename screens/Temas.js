@@ -4,13 +4,14 @@ import { Heading, AspectRatio, Image, Text, Center, HStack, Stack, Divider, Text
 import { collection, addDoc, doc, setDoc, getDocFromServer } from 'firebase/firestore';
 import db from '../database/firebase';
 import { getFirestore, getDocs, snapshotEqual } from 'firebase/firestore'
-
+import Orientation from 'react-native-orientation';
 const Temas = ({ navigation }) => {
 
     const [temas, setTemas] = useState()
 
     useEffect(() => {
-        getData()
+        getData(),
+        Orientation.lockToLandscape()
     }, [])
 
 

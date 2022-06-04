@@ -1,9 +1,7 @@
-import { React, useState, useEffect } from "react";
-import { StyleSheet, View } from 'react-native';
+import  React, {useState, useEffect } from "react";
+import { SafeAreaView, Alert, Modal, FlatList, StyleSheet, View, Pressable } from 'react-native';
 import { Heading, AspectRatio, Image, Text, Center, HStack, Stack, Divider, TextArea, Input, Button, NativeBaseProvider, Box, Circle, ScrollView } from "native-base";
-import { collection } from 'firebase/firestore';
-import db from '../database/firebase';
-import { getDocs } from 'firebase/firestore'
+import firestore from '@react-native-firebase/firestore';
 
 const Theme = ({ route, navigation }) => {
     const { item } = route.params;
@@ -17,14 +15,19 @@ const Theme = ({ route, navigation }) => {
     const getData = () => {
 
         try {
-            const colRef = collection(db, 'Temas')
-            const dataRequest = getDocs(colRef)
+            const colRef = firestore().collection('Temas')
+            const dataRequest = colRef.get()
                 .then((snapshot) => {
+                    //alert('Se accedio a la coleccion:' + snapshot.docs)
                     let Temas = []
                     snapshot.docs.forEach((doc) => {
                         Temas.push({ ...doc.data(), id: doc.id })
                     })
                     setTemas(Temas)
+                    /* Temas.forEach(doc => {
+                        alert(doc.Titulo)
+                        console.log(doc)//doc.Titulo puede traer los titulños de cada documento
+                    }); */
                 })
                 .catch(err => {
                     console.log(err.message)
@@ -36,12 +39,20 @@ const Theme = ({ route, navigation }) => {
 
     }
 
+    const Execute = () => {
+        temas.forEach(element => {
+            //<Text>${element.Titulo}</Text>
+            console.log(element.Titulo)
+        });
+    }
+
+
 
     return (
         <NativeBaseProvider>
             <ScrollView>
                 <View style={Estilo.Contenedor}>
-                    <Box alignItems="center" style={Estilo.Contenedor} >
+                    <Box alignItems="center"  style={Estilo.Contenedor} >
                         <Box marginTop={3} width="90%" rounded="lg" overflow="hidden" borderColor="coolGray.200" borderWidth="1" _dark={{
                             borderColor: "coolGray.600",
                             backgroundColor: "gray.700"
@@ -57,21 +68,30 @@ const Theme = ({ route, navigation }) => {
                                         uri: item.img
                                     }} alt="image" />
                                 </AspectRatio>
+                                {/* <Center bg="violet.500" _dark={{
+                                    bg: "violet.400"
+                                }} _text={{
+                                    color: "warmGray.50",
+                                    fontWeight: "700",
+                                    fontSize: "xs"
+                                }} position="absolute" bottom="0" px="3" py="1.5">
+                                    Tema
+                                </Center> */}
                             </Box>
                             <Stack p="4" space={3}>
                                 <Stack space={2}>
-                                    <Heading size="md" ml="-1">
+                                    <Heading size="md" ml="+1">
                                         {item.Titulo}
                                     </Heading>
                                 </Stack>
-                                <Text fontWeight="400">
+                                <Text fontWeight="400" style={{color: 'black'}}>
                                     {item.Cuerpo}
                                 </Text>
                                 <HStack alignItems="center" space={4} justifyContent="space-between">
                                 </HStack>
                             </Stack>
                         </Box>
-                    </Box>;
+                    </Box>
                 </View>
             </ScrollView>
         </NativeBaseProvider>

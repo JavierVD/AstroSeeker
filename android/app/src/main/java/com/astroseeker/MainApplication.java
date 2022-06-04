@@ -3,6 +3,7 @@ import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+import in.sriraman.sharedpreferences.RNSharedPreferencesReactPackage;
 import com.hieuvp.fingerprint.ReactNativeFingerprintScannerPackage;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.nuttawutmalee.RCTBluetoothSerial.RCTBluetoothSerialPackage;

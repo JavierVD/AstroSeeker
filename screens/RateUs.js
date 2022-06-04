@@ -1,9 +1,17 @@
-import { React} from "react";
-import { SafeAreaView, StyleSheet, View, Pressable } from 'react-native';
-import { Heading, AspectRatio, Image, HStack, Stack, NativeBaseProvider, Box, ScrollView } from "native-base";
+import React, {useState, useEffect } from "react";
+import { SafeAreaView, Alert, Modal, FlatList, StyleSheet, View, Pressable } from 'react-native';
+import { Heading, AspectRatio, Image, Text, Center, HStack, Stack, Divider, TextArea, Input, Button, NativeBaseProvider, Box, Circle, ScrollView } from "native-base";
+import { collection, addDoc, doc, setDoc, getDocFromServer } from 'firebase/firestore';
+import db from '../database/firebase';
+import { getFirestore, getDocs, snapshotEqual } from 'firebase/firestore';
 import { Linking } from 'react-native';
 
 const RateUs = ({ navigation }) => {
+
+    const [temas, setTemas] = useState()
+
+ 
+
 
     const RenderItem = () => {
         return (<ScrollView>
@@ -45,7 +53,7 @@ const RateUs = ({ navigation }) => {
                 <SafeAreaView style={Estilo.Contenedor} >
                     <Box width="lg" height="xl" marginTop={3} >
                         <Stack direction="column" space={4}>
-                            <Stack style={Estilo.BordeExterior} padding="" direction="column" space={2}>
+                            <Stack style={Estilo.BordeExterior} direction="column" space={2}>
                                 <RenderItem />
                             </Stack>
                         </Stack>

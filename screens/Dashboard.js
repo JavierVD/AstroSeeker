@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { SafeAreaView, TextInput, TouchableOpacity, Alert, Modal, FlatList, StyleSheet, Text, View, Pressable, Image } from 'react-native';
 import { Heading, Stack, Button, NativeBaseProvider, Box, Divider } from "native-base";
-
+import Orientation from 'react-native-orientation';
 
 const Dashboard = ({ navigation }) => {
     
     const [showModal, setShowModal] = useState(false)
+    useEffect(()=>{
+        Orientation.lockToPortrait()
+    })
 
     const HowTo = () => {
     
@@ -60,7 +63,7 @@ const Dashboard = ({ navigation }) => {
                     <Stack direction = "row" space = {2}>
                     <TouchableOpacity
                         activeOpacity={0.7}
-                        onPress={()=> { navigation.navigate("Bluetoothingles") } }
+                        onPress={()=> { navigation.navigate("BluetoothIngles") } }
                         style={{height: 30, width: 30, top: 10,left: 310, justifyContent: "center"}}>
                         <Image
                             source={require("../res/images/bluetooth.png")}
@@ -84,11 +87,11 @@ const Dashboard = ({ navigation }) => {
                     
                     <Stack padding = {4} space = {4} direction = "column">
                         
-                        <Button onPress = { () => { navigation.navigate("Themes") } } style = {{color: "black",width: 300,height: 60,borderColor: 'blue',borderWidth: 2,borderRadius: 100,backgroundColor: "black"}}>Mapa Estelar y Wiki</Button>
-                        <Button onPress = { () => { navigation.navigate("Panelin") } } style = {{color: "black",width: 300,height: 60,borderColor: 'blue',borderWidth: 2,borderRadius: 100,backgroundColor: "black"}}>Panel de control</Button>
-                        <Button onPress = { () => { navigation.navigate("Community") } } style = {{color: "black",width: 300,height: 60,borderColor: 'blue',borderWidth: 2,borderRadius: 100,backgroundColor: "black"}}>Comunidad</Button>
-                        <Button onPress = { () => { navigation.navigate("RateUs") } } style = {{color: "black",width: 300,height: 60,borderColor: 'blue',borderWidth: 2,borderRadius: 100,backgroundColor: "black"}}>Califícanos</Button>
-                        <Button onPress = { () => { navigation.navigate("AboutUs") } } style = {{color: "black",width: 300,height: 60,borderColor: 'blue',borderWidth: 2,borderRadius: 100,backgroundColor: "black"}}>Acerca de</Button>
+                        <Button onPress = { () => { navigation.navigate("Themes") } } style = {{color: "black",width: 300,height: 60,borderColor: 'blue',borderWidth: 2,borderRadius: 100,backgroundColor: "black"}}>Wiki</Button>
+                        <Button onPress = { () => { navigation.navigate("Tabsin") } } style = {{color: "black",width: 300,height: 60,borderColor: 'blue',borderWidth: 2,borderRadius: 100,backgroundColor: "black"}}>Panel</Button>
+                        <Button onPress = { () => { navigation.navigate("Community") } } style = {{color: "black",width: 300,height: 60,borderColor: 'blue',borderWidth: 2,borderRadius: 100,backgroundColor: "black"}}>Community</Button>
+                        <Button onPress = { () => { navigation.navigate("RateUs") } } style = {{color: "black",width: 300,height: 60,borderColor: 'blue',borderWidth: 2,borderRadius: 100,backgroundColor: "black"}}>Rate Us</Button>
+                        <Button onPress = { () => { navigation.navigate("AboutUs") } } style = {{color: "black",width: 300,height: 60,borderColor: 'blue',borderWidth: 2,borderRadius: 100,backgroundColor: "black"}}>About Us</Button>
                         </Stack>
 
                     </Box>

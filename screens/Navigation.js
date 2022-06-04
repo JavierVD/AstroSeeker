@@ -34,6 +34,9 @@ import Tutorial from './Tutorial';
 import BluetoothIngles from './BluetoothIngles';
 import Calibrar from './Calibrar';
 import Calibrarin from './Calibrarin';
+import ManagePost from './ManagePosts';
+import Tabs from './Tabs';
+import Tabsin from './Tabsin'
 const Stack = createNativeStackNavigator();
 
 export default function Navigation() {
@@ -52,11 +55,14 @@ export default function Navigation() {
         <Stack.Screen name="AboutUs" component={AboutUs} />
         <Stack.Screen name="Panel" component={Panel} />
         <Stack.Screen name="Panelin" component={Panelin} />
+        <Stack.Screen name="Tabs" component={Tabs} />
+                <Stack.Screen name="Tabsin" component={Tabsin} />
         <Stack.Screen name="Contact" component={Contact} />
         <Stack.Screen name="Calibrar" component={Calibrar} />
         <Stack.Screen name="Calibrarin" component={Calibrarin} />
+        <Stack.Screen name="ManagePost" component={ManagePost} />
         <Stack.Screen name="Settings" component={Settings} />
-        <Stack.Screen name="Wiki" component={Wiki} />
+        <Stack.Screen name="Wiki" options={{orientation: 'landscape'}} component={Wiki} />
         <Stack.Screen name = "Comm" component = { Community } />
         <Stack.Screen name = "newPost" component = { NewPost } />
         <Stack.Screen name = "ShowPost" component = { ShowPost } />
@@ -65,7 +71,6 @@ export default function Navigation() {
         <Stack.Screen name="RateUs" component={RateUs} />
         <Stack.Screen name="HowTo" component={HowTo} />
         <Stack.Screen name="Dashboard" component={Dashboard} />
-
         <Stack.Screen name="Login2" component={Login2} />
         <Stack.Screen name="Themes" component={Themes}/>
         <Stack.Screen name="Theme" component={Theme}/>

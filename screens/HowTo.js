@@ -1,5 +1,5 @@
-import React,{useState} from "react";
-
+import React from "react";
+import useState from "react";
 import { Alert, TextInput, Modal, FlatList, StyleSheet, Text, View, Pressable, Image } from 'react-native';
 import { Stack, Button, NativeBaseProvider, Box, Circle } from "native-base";
 
@@ -14,25 +14,13 @@ const HowTo = () => {
                 transparent={false}
                 visible={showModal}
                 onRequestClose={() => {
-                    Alert.alert("see you c:");
+                    Alert.alert("Hasta la proxima c:");
                     setShowModal(!showModal);
                 }}
                 >
                 <View>
-                   <View style={styles.container}>
-      <FlatList
-        data={[
-          {key: 'Welcome'},
-          {key: '1.-Go to dashboard'},
-          {key: '2.-Go to themes'},
-          {key: '3.-Push find planet'},
-          {key: 'Learn'},
-          {key: 'Dont forget rateus'},
-         
-        ]}
-        renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
-      />
-    </View>
+                    <Text>Bienvenido</Text>
+                    <Text>AQUI SE MUESTRAN LAS DIFERENTES INSTRUCCIONES PARA MANEJAR LA APLICACION"</Text>
                     <Button>{"<-"}</Button>
                     <Button>X</Button>
                     <Button>{"->"}</Button>

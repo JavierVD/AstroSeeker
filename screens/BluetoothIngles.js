@@ -59,7 +59,7 @@ export default class BluetoothIngles extends React.Component {
           textBody: 'Se ha conectado a la MAC ' + MACDIR,
           button: 'close',
         })
-        this.props.navigation.navigate('Panel');
+        this.props.navigation.navigate('Panelin');
       }
 
       await BluetoothSerial.stopScanning();

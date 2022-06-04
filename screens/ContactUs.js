@@ -1,7 +1,11 @@
-import { React, useState, useEffect } from "react";
-import { SafeAreaView, StyleSheet, View } from 'react-native';
-import { Heading, Image, Text, HStack, Stack, Button, NativeBaseProvider, Box, ScrollView } from "native-base";
+import React,{useState, useEffect } from "react";
+import { SafeAreaView, Alert, Modal, FlatList, StyleSheet, View, Pressable } from 'react-native';
+import { Heading, AspectRatio, Image, Text, Center, HStack, Stack, Divider, TextArea, Input, Button, NativeBaseProvider, Box, Circle, ScrollView } from "native-base";
+import { collection, addDoc, doc, setDoc, getDocFromServer } from 'firebase/firestore';
+import db from '../database/firebase';
+import { getFirestore, getDocs, snapshotEqual } from 'firebase/firestore';
 import { Linking } from 'react-native';
+import { withSafeAreaInsets } from "react-native-safe-area-context";
 
 const ContactUs = ({ navigation }) => {
 
@@ -55,8 +59,11 @@ const ContactUs = ({ navigation }) => {
                 <SafeAreaView style={Estilo.Contenedor} >
                     <Box width="lg" height="xl" marginTop={3} marginBottom={20}>
                         <Stack direction="column" space={4}>
-                            <Stack style={Estilo.BordeExterior} padding="" direction="column" space={2}>
+                            <Stack style={Estilo.BordeExterior} direction="column" space={2}>
                                 <RenderItem />
+
+                                {/* <FlatList data={temas} renderItem={renderItem} /> */}
+                                {/* <Button onPress={Execute}>Execute</Button> */}
                             </Stack>
                         </Stack>
                     </Box>

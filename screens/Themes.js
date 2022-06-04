@@ -1,30 +1,33 @@
-import { React, useState, useEffect } from "react";
-import { SafeAreaView, FlatList, StyleSheet, View } from 'react-native';
-import { Heading, AspectRatio, Image, Center, HStack, Stack, NativeBaseProvider, Box, ScrollView } from "native-base";
-import { collection} from 'firebase/firestore';
-import db from '../database/firebase';
-import { getDocs } from 'firebase/firestore'
-
+import  React, {useState, useEffect } from "react";
+import { SafeAreaView, Alert, Modal, FlatList, StyleSheet, View, Pressable, TouchableOpacity } from 'react-native';
+import { Heading, AspectRatio, Image, Text, Center, HStack, Stack, Divider, TextArea, Input, Button, NativeBaseProvider, Box, Circle, ScrollView } from "native-base";
+import firestore from '@react-native-firebase/firestore';
+import Orientation from 'react-native-orientation';
 const Themes = ({ navigation }) => {
 
     const [temas, setTemas] = useState()
 
     useEffect(() => {
-        getData()
+        getData(),
+        Orientation.lockToLandscape()
     }, [])
-
 
     const getData = () => {
 
         try {
-            const colRef = collection(db, 'Temas')
-            const dataRequest = getDocs(colRef)
+            const colRef = firestore().collection('Temas')
+            const dataRequest = colRef.get()
                 .then((snapshot) => {
+                    //alert('Se accedio a la coleccion:' + snapshot.docs)
                     let Temas = []
                     snapshot.docs.forEach((doc) => {
                         Temas.push({ ...doc.data(), id: doc.id })
                     })
                     setTemas(Temas)
+                    /* Temas.forEach(doc => {
+                        alert(doc.Titulo)
+                        console.log(doc)//doc.Titulo puede traer los titulños de cada documento
+                    }); */
                 })
                 .catch(err => {
                     console.log(err.message)
@@ -38,6 +41,7 @@ const Themes = ({ navigation }) => {
 
     const Execute = () => {
         temas.forEach(element => {
+            //<Text>${element.Titulo}</Text>
             console.log(element.Titulo)
         });
     }
@@ -45,6 +49,7 @@ const Themes = ({ navigation }) => {
     const renderItem = ({ item }) => {
         return (<ScrollView>
             <View>
+                <TouchableOpacity onPress={()=> navigation.navigate('Dashboard')}><Text style={{color: 'white', fontSize: 25}}>Back</Text></TouchableOpacity>
                 <Box alignItems="center" marginBottom={3} width="lg">
                     <Box maxW="lg" rounded="lg" overflow="hidden" borderColor="coolGray.200" borderWidth="1" _dark={{
                         borderColor: "coolGray.600",
@@ -58,6 +63,7 @@ const Themes = ({ navigation }) => {
                         <Box width={"lg"} bgColor={"white"}>
                             <AspectRatio w="100%" ratio={16 / 9}>
                                 <Image source={{
+                                    //uri: "https://www.holidify.com/images/cmsuploads/compressed/Bangalore_citycover_20190613234056.jpg"
                                     uri: item.img
                                 }} alt="image" />
                             </AspectRatio>
@@ -81,10 +87,11 @@ const Themes = ({ navigation }) => {
         <NativeBaseProvider>
             <ScrollView>
                 <SafeAreaView style={Estilo.Contenedor} >
-                    <Box width="lg%" marginTop={3}>
+                    <Box width="lg" marginTop={3}>
                         <Stack direction="column" space={4}>
                             <Stack style={Estilo.BordeExterior} direction="column" space={2}>
                                 <FlatList data={temas} renderItem={renderItem} />
+                                {/* <Button onPress={Execute}>Execute</Button> */}
                             </Stack>
                         </Stack>
                     </Box>

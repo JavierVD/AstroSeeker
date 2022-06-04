@@ -7,6 +7,7 @@ import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { RadioButton } from 'react-native-paper';
 export default function Configuracion({ navigation }) {
     const [checked, setChecked] = React.useState('first');
+    
     return (
         <NativeBaseProvider>
 
@@ -20,35 +21,19 @@ export default function Configuracion({ navigation }) {
                     <Stack space={2}>
                         <Heading size="md" ml="-1" paddingTop="5">
                             <Checkbox size="md" ml="-1" isChecked></Checkbox>
-                            <Text> Animacion de la pantalla de inicio</Text>
+                            <Text> Sonido de pantalla de inicio</Text>
 
                         </Heading>
                     </Stack>
                 </Stack>
 
-                <Stack space={3}>
-                    <Stack space={2}>
-                        <Heading size="md" ml="-1" paddingTop="5">
-                            <Checkbox size="md" ml="-1" isChecked></Checkbox>
-                            <Text> Efectos de sonido</Text>
-                        </Heading>
-                    </Stack>
-                </Stack>
-                <Stack space={3}>
-                    <Stack space={2}>
-                        <Heading size="md" ml="-1" paddingTop="5">
-                            <Checkbox size="md" ml="-1" isChecked></Checkbox>
-                            <Text> musica de fondo</Text>
-                        </Heading>
-                    </Stack>
-                </Stack>
                 <Stack space={3}>
                     <Stack space={2}>
                         <Heading size="md" ml="-1" paddingTop="5">
                         <RadioButton
                         value="first"
                         status={ checked === 'first' ? 'checked' : 'unchecked' }
-                        onPress={() => navigation.navigate("Configuracion")}
+
                 />
                 <Image width={25} height={25}           
                 source={{
