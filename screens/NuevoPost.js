@@ -1,92 +1,230 @@
-import React,{useState} from "react";
+import  React,{ useState } from "react";
+import { Alert, Modal, FlatList, StyleSheet, Text, View, Pressable, Image } from 'react-native';
+import { Stack, Divider, TextArea, Input, Button, NativeBaseProvider, Box, Circle } from "native-base";
+import auth from "@react-native-firebase/auth";
+import firestore from '@react-native-firebase/firestore';
+import { setStatusBarNetworkActivityIndicatorVisible } from "expo-status-bar";
 
-import { Alert, TextInput, Modal, FlatList, StyleSheet, Text, View, Pressable, Image } from 'react-native';
-import { Stack, Button, NativeBaseProvider, Box, Circle } from "native-base";
+const NuevoPost = ({ navigation }) => {
 
-const HowTo = () => {
+
+    const [Usr, setUsr] = useState("Carlos") 
+    //const CargarUsrLogeado = () => {
+        //Aqui se asigna al usuario logeado con el Auth
+        //Lo dejo fijo, para que lo asignes javys
+   //     setUsr("");
+   // }
+
+    const FechaDeHoy = () => {
+
+        const Dia = new Date().getDate();
+        const Mes = new Date().getMonth() + 1;
+        const Ano = new Date().getFullYear();
+
+        const Meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
+
+        return "".concat(Dia, "-", Meses[Mes - 1], "-", Ano);
+
+    }
+
+    const FechaFinal = "".concat(new Date().getDate(), "/", new Date().getMonth() + 1, "/", new Date().getFullYear())
 
     const [showModal, setShowModal] = useState(false)
 
-    return (
-        <View style={Estilo.ContenedorModal}>
+    const changeShowModal = () => setShowModal(!showModal)
+
+    const ProcederModal = () => {
+
+        return (
             <Modal
                 animationType="slide"
                 transparent={false}
                 visible={showModal}
                 onRequestClose={() => {
-                    Alert.alert("see you c:");
+                    alert("Hasta luego");
                     setShowModal(!showModal);
                 }}
-                >
-                <View>
-                   <View style={styles.container}>
-      <FlatList
-        data={[
-          {key: 'Welcome'},
-          {key: '1.-Go to dashboard'},
-          {key: '2.-Go to themes'},
-          {key: '3.-Push find planet'},
-          {key: 'Learn'},
-          {key: 'Dont forget rateus'},
-         
-        ]}
-        renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
-      />
-    </View>
-                    <Button>{"<-"}</Button>
-                    <Button>X</Button>
-                    <Button>{"->"}</Button>
+            >
+                <View style={Estilo.ModalProc}>
+                    <Text style={{ alignItems: 'center', padding: 22, margin: 5 , color: 'black'}}>before continuing...</Text>
+                    <Text style={{ alignItems: 'center', padding: 22, margin: 5 , color: 'black'}}>¿Realmente quiero publicar esta publicación.?</Text>
+                    <Stack space={2} direction='column'>
+                        <Button style={{ width: 100 }} onPress={CrearPost}>Continuar</Button>
+                        <Button style={{ width: 100 }} onPress={changeShowModal}>cancelar</Button>
+                    </Stack>
                 </View>
             </Modal>
-        </View>
+        );
+    }
+
+    const BotonVolver = () => {
+        return (
+            <Button style={Estilo.BotonVolver} onPress={() => { navigation.navigate("Comunidad") }}>Regresar</Button>
+        );
+    }
+
+    const CrearPost = async () => {
+        console.log(Topico)
+        if (Topico.Tema != "" && Topico.Descripcion != "") {
+
+            const ref = firestore().collection('Topicos');
+            await ref.add({
+                Autor: Topico.Autor,
+                Tema: Topico.Tema,
+                Descripcion: Topico.Descripcion,
+                Fecha: FechaFinal
+            });
+
+            if (ref.id != ""){
+                alert("Registro exitoso");
+                setShowModal(!showModal);
+                navigation.navigate("Comunidad", { Cambio: "SI" })
+            }
+            else
+                alert("Hubo un error al registrar");
+        }
+        else {
+            alert("No dejes los campos vacíos")
+        }
+
+    }
+
+    const [Topico, setTopico] = useState({
+        Autor: Usr, 
+        Tema: "",
+        Descripcion: "",
+        Fecha: FechaDeHoy
+    })
+
+    const handleChange = (e) => {
+        console.log(e.target.pendingProps)
+        e.preventDefault()
+        setTopico({ ...Topico, [e.target.placeholder]: e.target.value });
+
+    }
+
+    return (
+        <NativeBaseProvider style={Estilo.Contenedor}>
+            <ProcederModal />
+            <Box style={Estilo.Contenedor}>
+                <Box style={Estilo.Marco}>
+
+                    <Stack direction="column" space={4}>
+
+                        <Stack style={Estilo.BordeExterior} direction="column" space={2}>
+                            <Stack style={Estilo.BordeExterior} direction="row" space={2}>
+                                <Text style={Estilo.Fecha}><FechaDeHoy /></Text>
+                                <BotonVolver />
+                            </Stack>
+
+                            <Divider />
+                            <Text style={Estilo.Titulo}>Topico:</Text>
+                            <Input value={Topico.Tema} onChangeText={(txt)=> setTopico({ ...Topico, Tema: txt })} variant="rounded" mx="3" placeholder="Tema" />
+                            <Stack style={Estilo.BordeExterior} direction="column" space={2}>
+                                <Text style={Estilo.Titulo}>Descripcion:</Text>
+                                <TextArea onChangeText={(txt)=> setTopico({ ...Topico, Descripcion: txt })} value={Topico.Descripcion} variant="rounded" placeholder="Description" Width={Estilo.Inputs.width} />
+                            </Stack>
+                            <Divider />
+                            <Button style={Estilo.BotonAceptar} onPress={changeShowModal}>Publicar</Button>
+                        </Stack>
+
+                    </Stack>
+                </Box>
+            </Box>
+
+        </NativeBaseProvider>
+
     );
 }
 
-
-
 //CSS
 const Estilo = StyleSheet.create({
-    ContenedorModal: {
-        backgroundColor: '#ffff',
-        width: 500,
-        height: 500,
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        marginTop: 22
+    Contenedor: {
+        backgroundColor: '#0df',
+        alignItems: 'center',
+        justifyContent: 'center',
+        alignContent: 'center',
+        width: '100%',
+        height: '100%',
     },
-    Marco: {
-        backgroundColor: '#fff',
-        padding: 8,
-        margin: 4,
-        borderColor: 'black',
-        borderWidth: 5,
-        borderRadius: 15,
-        height: 150,
-        width: 300,
+    Inputs: {
+        backgroundColor: 'black',
+        width: "70%",
+        height: 50,
+        justifyContent: "center",
+        borderRadius: 20,
+        padding: 6,
+        margin: 6,
     },
     Titulo: {
-        backgroundColor: '#646',
-        padding: 10,
-        color: 'white',
+        padding: 2,
+        marginLeft: 6,
+        color: 'black',
         fontWeight: 'bold',
         width: '100%',
         textAlign: 'center',
         borderRadius: 10
     },
-    Texto: {
-        backgroundColor: '#a64',
-        color: 'white',
-        padding: 14,
+    Fecha: {
         fontWeight: 'bold',
-        borderRadius: 8,
-        margin: 2,
-        height: 50,
-        width: '70%',
+        width: '100%',
+        textAlign: 'left',
     },
+    BordeExterior: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        alignContent: 'center',
+        borderRadius: 20,
+        backgroundColor: 'white',
+        padding: 10,
+        margin: 1,
+        width: '100%'
+    },
+    BotonAceptar: {
+        backgroundColor: '#000',
+        padding: 8,
+        margin: 0,
+        color: 'white',
+        borderColor: 'red',
+        borderWidth: 2,
+        borderRadius: 15,
+        fontWeight: 'bold',
+        fontSize: 15,
+        height: 60,
+        width: '94%',
+        fontWeight: 'bold'
+    },
+    Marco: {
+        borderRadius: 80,
+        padding: 10,
+        width: "80%",
+        height: "50%"
+    },
+    ModalProc: {
+        width: 300,
+        height: 300,
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: "center",
+        padding: 22,
+        margin: 5,
+        borderWidth: 1,
+        borderRadius: 50
+    },
+    BotonVolver: {
+        backgroundColor: '#000',
+        color: 'white',
+        borderColor: 'red',
+        borderWidth: 2,
+        borderRadius: 15,
+        fontWeight: 'bold',
+        fontSize: 15,
+        height: 40,
+        width: 200,
+        fontWeight: 'bold'
+    }
 });
 
-export default HowTo;
+
+
+export default NuevoPost;

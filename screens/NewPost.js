@@ -59,7 +59,7 @@ const NewPost = ({ navigation }) => {
 
     const BotonVolver = () => {
         return (
-            <Button style={Estilo.BotonVolver} onPress={() => { navigation.navigate("Comm") }}>Return</Button>
+            <Button style={Estilo.BotonVolver} onPress={() => { navigation.navigate("Community") }}>Return</Button>
         );
     }
 
@@ -76,9 +76,9 @@ const NewPost = ({ navigation }) => {
             });
 
             if (ref.id != ""){
-                alert("Registro exitoso");
+                alert("Successful registration");
                 setShowModal(!showModal);
-                navigation.navigate("Comm", { Cambio: "SI" })
+                navigation.navigate("Community", { Cambio: "SI" })
             }
             else
                 alert("There was an error registering");
@@ -118,14 +118,14 @@ const NewPost = ({ navigation }) => {
                             </Stack>
 
                             <Divider />
-                            <Text style={Estilo.Titulo}>Topico:</Text>
+                            <Text style={Estilo.Titulo}>Topic:</Text>
                             <Input value={Topico.Tema} onChangeText={(txt)=> setTopico({ ...Topico, Tema: txt })} variant="rounded" mx="3" placeholder="Tema" />
                             <Stack style={Estilo.BordeExterior} direction="column" space={2}>
                                 <Text style={Estilo.Titulo}>Description:</Text>
                                 <TextArea onChangeText={(txt)=> setTopico({ ...Topico, Descripcion: txt })} value={Topico.Descripcion} variant="rounded" placeholder="Description" Width={Estilo.Inputs.width} />
                             </Stack>
                             <Divider />
-                            <Button style={Estilo.BotonAceptar} onPress={changeShowModal}>Publicar</Button>
+                            <Button style={Estilo.BotonAceptar} onPress={changeShowModal}>Post</Button>
                         </Stack>
 
                     </Stack>
