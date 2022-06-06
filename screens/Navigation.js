@@ -34,7 +34,8 @@ import Tutorial from './Tutorial';
 import BluetoothIngles from './BluetoothIngles';
 import Calibrar from './Calibrar';
 import Calibrarin from './Calibrarin';
-import ManagePost from './ManagePosts';
+import ManagePost from './ManagePost';
+import AdminPost from './AdminPost';
 import Tabs from './Tabs';
 import Tabsin from './Tabsin'
 const Stack = createNativeStackNavigator();
@@ -61,6 +62,7 @@ export default function Navigation() {
         <Stack.Screen name="Calibrar" component={Calibrar} />
         <Stack.Screen name="Calibrarin" component={Calibrarin} />
         <Stack.Screen name="ManagePost" component={ManagePost} />
+               <Stack.Screen name="AdminPost" component={AdminPost} />
         <Stack.Screen name="Settings" component={Settings} />
         <Stack.Screen name="Wiki" options={{orientation: 'landscape'}} component={Wiki} />
         <Stack.Screen name = "Comm" component = { Community } />
