@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { SafeAreaView, TextInput, TouchableOpacity, Alert, Modal, FlatList, StyleSheet, Text, View, Pressable, Image } from 'react-native';
 import { Heading, Stack, Button, NativeBaseProvider, Box, Divider } from "native-base";
-
+import Orientation from 'react-native-orientation';
 
 const Dashboard = ({ navigation }) => {
     
     const [showModal, setShowModal] = useState(false)
+    useEffect(()=>{
+        Orientation.lockToPortrait()
+    })
 
     const HowTo = () => {
     
@@ -17,13 +20,13 @@ const Dashboard = ({ navigation }) => {
                     transparent={false}
                     visible={showModal}
                     onRequestClose={() => {
-                        Alert.alert("Hasta la proxima c:");
+                        Alert.alert("See you c:");
                         setShowModal(!showModal);
                     }}
                     >
                     <View style = {{alignItems: 'center', padding: 22, margin: 5}}>
-                        <Text style = {{alignItems: 'center', padding: 22, margin: 5}}>Bienvenido</Text>
-                     
+                    <Text style = {{alignItems: 'center', padding: 22, margin: 5}}>Bienvenido</Text>
+                        <Text style = {{alignItems: 'center', padding: 22, margin: 5}}>Aquí están las diferentes instrucciones para usar la Aplicación</Text>
                         <Stack space = {3} direction = 'row'>
                             <Button style = {{ width: 100}}>{"<-"}</Button>
                             <Button onPress = { () => setShowModal(!showModal) } style = {{ width: 100}}>X</Button>
@@ -84,11 +87,11 @@ const Dashboard = ({ navigation }) => {
                     
                     <Stack padding = {4} space = {4} direction = "column">
                         
-                        <Button onPress = { () => { navigation.navigate("Temas") } } style = {{color: "black",width: 300,height: 60,borderColor: 'blue',borderWidth: 2,borderRadius: 100,backgroundColor: "black"}}>Mapa Estelar y Wiki</Button>
-                        <Button onPress = { () => { navigation.navigate("Panel") } } style = {{color: "black",width: 300,height: 60,borderColor: 'blue',borderWidth: 2,borderRadius: 100,backgroundColor: "black"}}>Panel de control</Button>
-                        <Button onPress = { () => { navigation.navigate("Comunidad") } } style = {{color: "black",width: 300,height: 60,borderColor: 'blue',borderWidth: 2,borderRadius: 100,backgroundColor: "black"}}>Comunidad</Button>
-                        <Button onPress = { () => { navigation.navigate("Calificanos") } } style = {{color: "black",width: 300,height: 60,borderColor: 'blue',borderWidth: 2,borderRadius: 100,backgroundColor: "black"}}>Califícanos</Button>
-                        <Button onPress = { () => { navigation.navigate("Sobrenosotros") } } style = {{color: "black",width: 300,height: 60,borderColor: 'blue',borderWidth: 2,borderRadius: 100,backgroundColor: "black"}}>Acerca de</Button>
+                        <Button onPress = { () => { navigation.navigate("Temas") } } style = {{color: "black",width: 300,height: 60,borderColor: 'blue',borderWidth: 2,borderRadius: 100,backgroundColor: "black"}}>Wiki</Button>
+                        <Button onPress = { () => { navigation.navigate("Tabs") } } style = {{color: "black",width: 300,height: 60,borderColor: 'blue',borderWidth: 2,borderRadius: 100,backgroundColor: "black"}}>Panel</Button>
+                        <Button onPress = { () => { navigation.navigate("Comunidad") } } style = {{color: "black",width: 300,height: 60,borderColor: 'blue',borderWidth: 2,borderRadius: 100,backgroundColor: "black"}}>Community</Button>
+                        <Button onPress = { () => { navigation.navigate("Calificanos") } } style = {{color: "black",width: 300,height: 60,borderColor: 'blue',borderWidth: 2,borderRadius: 100,backgroundColor: "black"}}>Rate Us</Button>
+                        <Button onPress = { () => { navigation.navigate("Sobrenosotros") } } style = {{color: "black",width: 300,height: 60,borderColor: 'blue',borderWidth: 2,borderRadius: 100,backgroundColor: "black"}}>About Us</Button>
                         </Stack>
 
                     </Box>
