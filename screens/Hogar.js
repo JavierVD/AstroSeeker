@@ -11,7 +11,7 @@ export default function Home({ navigation }) {
         <Text style={styles.title}>Pantalla de hogar</Text>
         <Button
           title="Ir a contactos"
-          onPress={() => navigation.navigate('Contact')}
+          onPress={() => navigation.navigate('Contactanos')}
         />
         <StatusBar style="auto" />
       </NativeBaseProvider>
