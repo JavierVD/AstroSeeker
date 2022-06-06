@@ -102,7 +102,7 @@ export default function Community  ({ route, navigation }) {
                     transparent={false}
                     visible={showModal}
                     onRequestClose={() => {
-                        alert("Hasta la proxima c:");
+                        alert("See you c:");
                         setShowModal(!showModal);
                     }}
                 >
