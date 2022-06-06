@@ -74,7 +74,7 @@ export default class Calibrar extends React.Component {
     }else{
       await AsyncStorage.setItem('@ar', this.state.ar);
       await AsyncStorage.setItem('@dec', this.state.dec);
-      this.props.navigation.navigate('Panel');
+      this.props.navigation.navigate('Panelin');
     }
   }
 
@@ -87,7 +87,7 @@ export default class Calibrar extends React.Component {
       <View style={styles.container}>
         <TouchableOpacity
           style={styles.back_button}
-          onPress={() => this.props.navigation.navigate('Panel')}>
+          onPress={() => this.props.navigation.navigate('Panelin')}>
           <Image
             style={styles.back_button}
             source={require('../res/images/return.png')}
@@ -126,7 +126,7 @@ export default class Calibrar extends React.Component {
                   resetValue={false}
                   textInputProps={
                     {
-                      placeholder: "Buscar estrella de referencia",
+                      placeholder: "Search Star",
                       underlineColorAndroid: "transparent",
                       style: {
                           padding: 12,
