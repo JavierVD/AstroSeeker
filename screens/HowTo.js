@@ -14,13 +14,16 @@ const HowTo = () => {
                 transparent={false}
                 visible={showModal}
                 onRequestClose={() => {
-                    Alert.alert("Hasta la proxima c:");
+                    Alert.alert("see you c:");
                     setShowModal(!showModal);
                 }}
                 >
                 <View>
-                    <Text>Bienvenido</Text>
-                    <Text>AQUI SE MUESTRAN LAS DIFERENTES INSTRUCCIONES PARA MANEJAR LA APLICACION"</Text>
+                    <Text>Welcome</Text>
+                    <Text>step 1: go to the dashboard"</Text>
+                    <Text>step 2: Select"</Text>
+                    <Text>step 3: Search you planet"</Text>
+                    <Text>step 4: have funt"</Text>
                     <Button>{"<-"}</Button>
                     <Button>X</Button>
                     <Button>{"->"}</Button>
