@@ -116,7 +116,7 @@ const ShowPost = ({ route, navigation }) => {
 
 
     const BuscarInfo = async () => {
-        console.log("Inicia")
+        console.log("Start")
         const Fila = [];
         //Referencia a la BD en su tabla topicos
         const gal = firestore().collection('Comentarios').where("Tema","==", Tema).get().then(querySnapshot => {
@@ -184,9 +184,9 @@ const ShowPost = ({ route, navigation }) => {
                 </Box>
                 <Box>
                     <Button onPress={() => {
-                        navigation.navigate("Comm")
+                        navigation.navigate("Community")
                     }}>
-                        Regresar
+                        Return
                     </Button>
 
                 </Box>
@@ -198,7 +198,7 @@ const ShowPost = ({ route, navigation }) => {
                 transparent={false}
                 visible={showModal}
                 onRequestClose={() => {
-                    alert("See youc:");
+                    alert("See you c:");
                     setShowModal(!showModal);
                 }}>
                 <View style={Estilo.ViewComent}>
@@ -210,7 +210,7 @@ const ShowPost = ({ route, navigation }) => {
 
                     <Stack direction="row" space={2}>
 
-                        <Input value={Comentario} onChange={(e) => handleChange(e)} variant="rounded" mx="3" placeholder="Comparte tus ideas c:" />
+                        <Input value={Comentario} onChange={(e) => handleChange(e)} variant="rounded" mx="3" placeholder="Share your ideas c:" />
 
                         <Button onPress={() => changeShowModalProceder(!showModalProceder)}>Send</Button>
 
@@ -221,7 +221,7 @@ const ShowPost = ({ route, navigation }) => {
                         <Button style={Estilo.BotonCerrarModal} onPress={() => {
                             setShowModal(!showModal);
                             console.log("close");
-                        }}>Cerrar</Button>
+                        }}>Close</Button>
                     </View>
                 </View>
             </Modal>
