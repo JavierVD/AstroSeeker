@@ -45,16 +45,16 @@ const ShowPost = ({ route, navigation }) => {
                 transparent={false}
                 visible={showModalProceder}
                 onRequestClose={() => {
-                    alert("Hasta luego");
+                    alert("See you");
                     setShowModalProceder(!showModalProceder);
                 }}
             >
                 <View style={Estilo.ModalProc}>
-                    <Text style={{ alignItems: 'center', padding: 22, margin: 5 }}>Antes de continuar...</Text>
-                    <Text style={{ alignItems: 'center', padding: 22, margin: 5 }}>¿Realmente desea publicar este post?</Text>
+                    <Text style={{ alignItems: 'center', padding: 22, margin: 5 }}>before continuingr...</Text>
+                    <Text style={{ alignItems: 'center', padding: 22, margin: 5 }}>¿really want to publish this post?</Text>
                     <Stack space={2} direction='coulumn'>
-                        <Button style={{ width: 100 }} onPress={Publicar}>Continuar</Button>
-                        <Button style={{ width: 100 }} onPress={changeShowModalProceder}>Cancelar</Button>
+                        <Button style={{ width: 100 }} onPress={Publicar}>Continue</Button>
+                        <Button style={{ width: 100 }} onPress={changeShowModalProceder}>Cancel</Button>
                     </Stack>
                 </View>
             </Modal>
@@ -75,17 +75,17 @@ const ShowPost = ({ route, navigation }) => {
             });
 
             if (docRef.id != "") {
-                alert("Registro exitoso");
+                alert("Successful registration");
                 setShowModalProceder(!showModalProceder)
                 //setShowModal(!showModal)
                 BuscarInfo();
                 Lista();
             }
             else
-                alert("Hubo un error al registrar");
+                alert("There was an error registering");
         }
         else {
-            alert("No te has expresado :c")
+            alert("you have not expressed :c")
             setShowModalProceder(!showModalProceder)
         }
 
@@ -93,7 +93,7 @@ const ShowPost = ({ route, navigation }) => {
 
     useEffect(() => {
         BuscarInfo();
-        console.log("Hecho")
+        console.log("Done")
     }, []);
 
     const [Comentarios, setComentarios] = useState({
@@ -178,7 +178,7 @@ const ShowPost = ({ route, navigation }) => {
                     <Divider style={Estilo.Divider} />
                     <Text style={Estilo.Texto}>{Descripcion}</Text>
                     <Divider style={Estilo.Divider} />
-                    <Text style={Estilo.Titulo}>Creado por {Autor}</Text>
+                    <Text style={Estilo.Titulo}>Created by {Autor}</Text>
                     <Image alt="Foto" style={{ borderColor: 'black', borderWidth: 2, borderRadius: 60, width: 60, height: 60 }}></Image>
 
                 </Box>
@@ -198,7 +198,7 @@ const ShowPost = ({ route, navigation }) => {
                 transparent={false}
                 visible={showModal}
                 onRequestClose={() => {
-                    alert("Hasta la proxima c:");
+                    alert("See youc:");
                     setShowModal(!showModal);
                 }}>
                 <View style={Estilo.ViewComent}>
@@ -212,7 +212,7 @@ const ShowPost = ({ route, navigation }) => {
 
                         <Input value={Comentario} onChange={(e) => handleChange(e)} variant="rounded" mx="3" placeholder="Comparte tus ideas c:" />
 
-                        <Button onPress={() => changeShowModalProceder(!showModalProceder)}>Enviar</Button>
+                        <Button onPress={() => changeShowModalProceder(!showModalProceder)}>Send</Button>
 
                     </Stack>
 
@@ -220,7 +220,7 @@ const ShowPost = ({ route, navigation }) => {
                     <View>
                         <Button style={Estilo.BotonCerrarModal} onPress={() => {
                             setShowModal(!showModal);
-                            console.log("Cerrar");
+                            console.log("close");
                         }}>Cerrar</Button>
                     </View>
                 </View>
