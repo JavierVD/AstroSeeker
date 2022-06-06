@@ -46,11 +46,11 @@ const NewPost = ({ navigation }) => {
                 }}
             >
                 <View style={Estilo.ModalProc}>
-                    <Text style={{ alignItems: 'center', padding: 22, margin: 5 , color: 'black'}}>Antes de continuar...</Text>
-                    <Text style={{ alignItems: 'center', padding: 22, margin: 5 , color: 'black'}}>¿Realmente desea publicar este post?</Text>
+                    <Text style={{ alignItems: 'center', padding: 22, margin: 5 , color: 'black'}}>before continuing...</Text>
+                    <Text style={{ alignItems: 'center', padding: 22, margin: 5 , color: 'black'}}>¿I really want to publish this post?</Text>
                     <Stack space={2} direction='column'>
-                        <Button style={{ width: 100 }} onPress={CrearPost}>Continuar</Button>
-                        <Button style={{ width: 100 }} onPress={changeShowModal}>Cancelar</Button>
+                        <Button style={{ width: 100 }} onPress={CrearPost}>Continue</Button>
+                        <Button style={{ width: 100 }} onPress={changeShowModal}>cancel</Button>
                     </Stack>
                 </View>
             </Modal>
@@ -59,7 +59,7 @@ const NewPost = ({ navigation }) => {
 
     const BotonVolver = () => {
         return (
-            <Button style={Estilo.BotonVolver} onPress={() => { navigation.navigate("Comm") }}>Volver</Button>
+            <Button style={Estilo.BotonVolver} onPress={() => { navigation.navigate("Comm") }}>Return</Button>
         );
     }
 
@@ -81,10 +81,10 @@ const NewPost = ({ navigation }) => {
                 navigation.navigate("Comm", { Cambio: "SI" })
             }
             else
-                alert("Hubo un error al registrar");
+                alert("There was an error registering");
         }
         else {
-            alert("No deje los campos vacios")
+            alert("Do not leave the fields empty")
         }
 
     }
@@ -121,8 +121,8 @@ const NewPost = ({ navigation }) => {
                             <Text style={Estilo.Titulo}>Topico:</Text>
                             <Input value={Topico.Tema} onChangeText={(txt)=> setTopico({ ...Topico, Tema: txt })} variant="rounded" mx="3" placeholder="Tema" />
                             <Stack style={Estilo.BordeExterior} direction="column" space={2}>
-                                <Text style={Estilo.Titulo}>Descripcion:</Text>
-                                <TextArea onChangeText={(txt)=> setTopico({ ...Topico, Descripcion: txt })} value={Topico.Descripcion} variant="rounded" placeholder="Descripcion" Width={Estilo.Inputs.width} />
+                                <Text style={Estilo.Titulo}>Description:</Text>
+                                <TextArea onChangeText={(txt)=> setTopico({ ...Topico, Descripcion: txt })} value={Topico.Descripcion} variant="rounded" placeholder="Description" Width={Estilo.Inputs.width} />
                             </Stack>
                             <Divider />
                             <Button style={Estilo.BotonAceptar} onPress={changeShowModal}>Publicar</Button>
