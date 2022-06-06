@@ -39,11 +39,11 @@ const ContactUs = ({ navigation }) => {
                             <Text style={styles.paragraph}>
                                 Fb/AstroSeeker
                             </Text>
-                            <Button onPress={() => Linking.openURL('https://facebook.com')}>Facebook</Button>
+                            <Button onPress={() => Linking.openURL('https://www.facebook.com/profile.php?id=100081961934015')}>Facebook</Button>
 
                             <Image marginTop={12} style={styles.gmail} source={require('../assets/gmail.png')} alt='image' />
                             <Text style={styles.paragraph}>
-                                gmail: astroseeker@xeoty.com
+                                gmail: Astroseekerdata@gmail.com
                             </Text>
                             <Button onPress={() => Linking.openURL('https://gmail.com')}>Gmail</Button>
                         </View>
