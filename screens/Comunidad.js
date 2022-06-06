@@ -102,7 +102,7 @@ export default function Community  ({ route, navigation }) {
                     transparent={false}
                     visible={showModal}
                     onRequestClose={() => {
-                        alert("See you c:");
+                        alert("Hasta luego c:");
                         setShowModal(!showModal);
                     }}
                 >
@@ -126,7 +126,7 @@ export default function Community  ({ route, navigation }) {
                 <View>
                     <TouchableOpacity
                         activeOpacity={0.7}
-                        onPress={() => { navigation.navigate("newPost") }}
+                        onPress={() => { navigation.navigate("NuevoPost") }}
                         style={Estilo.TouchableFlotante}>
                         <Image
                             source={require("./../assets/Agregar.png")}
@@ -143,7 +143,7 @@ export default function Community  ({ route, navigation }) {
                 <View>
                     <TouchableOpacity
                         activeOpacity={0.7}
-                        onPress={() => { navigation.navigate("ManagePost") }}
+                        onPress={() => { navigation.navigate("AdminPost") }}
                         style={Estilo.TouchableFlotante3}>
                         <Image
                             source={require("./../assets/Lista.png")}
@@ -179,7 +179,7 @@ export default function Community  ({ route, navigation }) {
             <View style={Estilo.Marco}>
                 <Stack>
                     <Pressable style={{ height: Estilo.Titulo.height, width: Estilo.Titulo.width }} onPress={() => 
-                        { navigation.navigate("ShowPost", { idPost: item.id, Autor: item.Autor, Descripcion: item.Descripcion, Tema: item.Tema }) }}>
+                        { navigation.navigate("VerPost", { idPost: item.id, Autor: item.Autor, Descripcion: item.Descripcion, Tema: item.Tema }) }}>
                         <Text style={Estilo.Titulo}>{item.Tema}</Text>
                     </Pressable>
                     <Stack direction="row" space={2} style={Estilo.Caratula2}>
@@ -205,7 +205,7 @@ export default function Community  ({ route, navigation }) {
             <Box flex={10} style={Estilo.Contenedor}>
                 <Input value={Bus} onChange={handleBus} style={Estilo.InputBus} type="text" w="full" maxW="300px" py="0" InputRightElement=
                     {<Button size="xs" rounded="none" h="full" onPress={BuscarInfo}>Search
-                    </Button>} placeholder="search..." />
+                    </Button>} placeholder="Tipea tu busqueda..." />
                 <Divider />
 
                 <Lista/>
