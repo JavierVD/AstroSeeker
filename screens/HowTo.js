@@ -23,7 +23,7 @@ const HowTo = () => {
                     <Text>step 1: go to the dashboard"</Text>
                     <Text>step 2: Select"</Text>
                     <Text>step 3: Search you planet"</Text>
-                    <Text>step 4: have funt"</Text>
+                    <Text>step 4: have fun and learn"</Text>
                     <Button>{"<-"}</Button>
                     <Button>X</Button>
                     <Button>{"->"}</Button>
