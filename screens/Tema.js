@@ -1,11 +1,9 @@
-import { React, useState, useEffect } from "react";
+import  React, {useState, useEffect } from "react";
 import { SafeAreaView, Alert, Modal, FlatList, StyleSheet, View, Pressable } from 'react-native';
 import { Heading, AspectRatio, Image, Text, Center, HStack, Stack, Divider, TextArea, Input, Button, NativeBaseProvider, Box, Circle, ScrollView } from "native-base";
-import { collection, addDoc, doc, setDoc, getDocFromServer } from 'firebase/firestore';
-import db from '../database/firebase';
-import { getFirestore, getDocs, snapshotEqual } from 'firebase/firestore'
+import firestore from '@react-native-firebase/firestore';
 
-const Theme = ({ route, navigation }) => {
+const Tema = ({ route, navigation }) => {
     const { item } = route.params;
     const [temas, setTemas] = useState()
 
@@ -17,8 +15,8 @@ const Theme = ({ route, navigation }) => {
     const getData = () => {
 
         try {
-            const colRef = collection(db, 'Temas')
-            const dataRequest = getDocs(colRef)
+            const colRef = firestore().collection('Temas')
+            const dataRequest = colRef.get()
                 .then((snapshot) => {
                     //alert('Se accedio a la coleccion:' + snapshot.docs)
                     let Temas = []
@@ -82,18 +80,18 @@ const Theme = ({ route, navigation }) => {
                             </Box>
                             <Stack p="4" space={3}>
                                 <Stack space={2}>
-                                    <Heading size="md" ml="-1">
+                                    <Heading size="md" ml="+1">
                                         {item.Titulo}
                                     </Heading>
                                 </Stack>
-                                <Text fontWeight="400">
+                                <Text fontWeight="400" style={{color: 'black'}}>
                                     {item.Cuerpo}
                                 </Text>
                                 <HStack alignItems="center" space={4} justifyContent="space-between">
                                 </HStack>
                             </Stack>
                         </Box>
-                    </Box>;
+                    </Box>
                 </View>
             </ScrollView>
         </NativeBaseProvider>
@@ -173,4 +171,4 @@ const Estilo = StyleSheet.create({
 
 
 
-export default Theme;
+export default Tema;

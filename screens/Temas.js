@@ -1,9 +1,7 @@
-import { React, useState, useEffect } from "react";
-import { SafeAreaView, Alert, Modal, FlatList, StyleSheet, View, Pressable } from 'react-native';
+import  React, {useState, useEffect } from "react";
+import { SafeAreaView, Alert, Modal, FlatList, StyleSheet, View, Pressable, TouchableOpacity } from 'react-native';
 import { Heading, AspectRatio, Image, Text, Center, HStack, Stack, Divider, TextArea, Input, Button, NativeBaseProvider, Box, Circle, ScrollView } from "native-base";
-import { collection, addDoc, doc, setDoc, getDocFromServer } from 'firebase/firestore';
-import db from '../database/firebase';
-import { getFirestore, getDocs, snapshotEqual } from 'firebase/firestore'
+import firestore from '@react-native-firebase/firestore';
 import Orientation from 'react-native-orientation';
 const Temas = ({ navigation }) => {
 
@@ -14,12 +12,11 @@ const Temas = ({ navigation }) => {
         Orientation.lockToLandscape()
     }, [])
 
-
     const getData = () => {
 
         try {
-            const colRef = collection(db, 'Temas')
-            const dataRequest = getDocs(colRef)
+            const colRef = firestore().collection('Temas')
+            const dataRequest = colRef.get()
                 .then((snapshot) => {
                     //alert('Se accedio a la coleccion:' + snapshot.docs)
                     let Temas = []
@@ -52,6 +49,7 @@ const Temas = ({ navigation }) => {
     const renderItem = ({ item }) => {
         return (<ScrollView>
             <View>
+                <TouchableOpacity onPress={()=> navigation.navigate('Tablero')}><Text style={{color: 'white', fontSize: 25}}>Regresar</Text></TouchableOpacity>
                 <Box alignItems="center" marginBottom={3} width="lg">
                     <Box maxW="lg" rounded="lg" overflow="hidden" borderColor="coolGray.200" borderWidth="1" _dark={{
                         borderColor: "coolGray.600",
@@ -89,7 +87,7 @@ const Temas = ({ navigation }) => {
         <NativeBaseProvider>
             <ScrollView>
                 <SafeAreaView style={Estilo.Contenedor} >
-                    <Box width="lg%" marginTop={3}>
+                    <Box width="lg" marginTop={3}>
                         <Stack direction="column" space={4}>
                             <Stack style={Estilo.BordeExterior} direction="column" space={2}>
                                 <FlatList data={temas} renderItem={renderItem} />
