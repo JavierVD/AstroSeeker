@@ -2,7 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { SafeAreaView, TouchableOpacity, Alert, Modal, FlatList, StyleSheet, Text, View, Pressable, Image } from 'react-native';
 import { Stack, Input, Button, NativeBaseProvider, Box, Divider } from "native-base";
-import firestore from '@react-native-firebase/firestore';
+import { deleteDoc, addDoc, doc, updateDoc, setDoc, getDocs, orderBy, collection, limit, query, where } from 'firebase/firestore';
+import fb from '../Firebase/Conexion'
 
 const ManagePost = ({ route, navigation }) => {
 
@@ -65,12 +66,16 @@ const ManagePost = ({ route, navigation }) => {
 
     const BuscarInfo = async () => {
         console.log("Inicia")
+        //Referencia a la BD en su tabla topicos
+        const dbRef = collection(fb.db, "Topicos");
 
         const Fila = [];
 
         if (Bus != "") {
-            console.log(Bus)
-        const gal = firestore().collection('Topicos').where("Autor","==", Usr).orderBy('Tema').startAt(Bus).get().then(querySnapshot => {
+            const Busqueda = query(dbRef, where("Autor", "==", Usr), startAt(Bus));
+
+            const querySnapshot = await getDocs(Busqueda);
+
             querySnapshot.forEach((doc) => {
                 const Id = doc.id;
                 const { Autor, Tema, Descripcion, Fecha } = doc.data();
@@ -84,9 +89,11 @@ const ManagePost = ({ route, navigation }) => {
             });
             handleTema(Fila);
             console.log("Temas", Temas);
-        })}
+        }
         else {
-            const gal = firestore().collection('Topicos').where("Autor","==", Usr).get().then(querySnapshot => {
+            const Busqueda = query(dbRef, where("Autor", "==", Usr));
+            const querySnapshot = await getDocs(Busqueda);
+
             querySnapshot.forEach((doc) => {
                 const Id = doc.id;
                 const { Autor, Tema, Descripcion, Fecha } = doc.data();
@@ -100,7 +107,7 @@ const ManagePost = ({ route, navigation }) => {
             });
             handleTema(Fila);
             console.log("Fila:\n", Fila);
-        })}
+        }
         console.log("Fin");
         return Fila;
     }
@@ -123,8 +130,8 @@ const ManagePost = ({ route, navigation }) => {
                     }}
                 >
                     <View style={{ alignItems: 'center', padding: 22, margin: 5 }}>
-                        <Text style={{ alignItems: 'center', padding: 22, margin: 5, color:'black' }}>Bienvenido</Text>
-                        <Text style={{ alignItems: 'center', padding: 22, margin: 5, color:'black' }}>AQUI SE MUESTRAN LAS DIFERENTES INSTRUCCIONES PARA MANEJAR LA APLICACION</Text>
+                        <Text style={{ alignItems: 'center', padding: 22, margin: 5 }}>Bienvenido</Text>
+                        <Text style={{ alignItems: 'center', padding: 22, margin: 5 }}>AQUI SE MUESTRAN LAS DIFERENTES INSTRUCCIONES PARA MANEJAR LA APLICACION</Text>
                         <Stack space={3} direction='row'>
                             <Button style={{ width: 100 }}>{"<-"}</Button>
                             <Button style={{ width: 100 }} onPress={() => setShowModal(!showModal)}>X</Button>
@@ -139,8 +146,9 @@ const ManagePost = ({ route, navigation }) => {
     const Erease = async (key, topic) => {
         console.log(key, "- ", topic)
         //Borra El Post
-        const res = await firestore().collection('Topicos').doc(key).delete();
-        const a = await firestore().collection('Comentarios').doc(topic).delete();
+        const e = await deleteDoc(doc(fb.db, "Topicos", key));
+        //Sus comentarios
+        const a = await deleteDoc(doc(fb.db, "Comentarios", topic));
 
         alert("Borrado completo");
 
@@ -149,9 +157,10 @@ const ManagePost = ({ route, navigation }) => {
     //Metodo para actualizar
     const Update = async (key) => {
         console.log("k: ",key)
-        const ref = firestore().collection('Topicos').doc(key)({
+        const RegistroSeleccionado = doc(fb.db, "Topicos", key);
+        await updateDoc(RegistroSeleccionado, {
             Descripcion: Comentario
-          },{merge:true});
+          });
 
         alert("Actualizacion hecha");
 
@@ -175,7 +184,7 @@ const ManagePost = ({ route, navigation }) => {
                         <Text style={Estilo.Titulo}>{item.Tema}</Text>
                     </View>
                     <Stack direction="row" space={2} style={Estilo.Caratula2}>
-                        <Stack style={[Estilo.Caratula3, { width: 800 }]} direction="row" space={2}>
+                        <Stack style={{ width: 800 }} direction="row" space={2} style={Estilo.Caratula3}>
                             <Image alt="Foto" style={{ borderColor: 'black', borderWidth: 2, borderRadius: 40, width: 45, height: 45 }}></Image>
                             <Text style={Estilo.Texto}>{item.Autor}</Text>
                             
@@ -221,8 +230,8 @@ const ManagePost = ({ route, navigation }) => {
                 }}
             >
                 <View style={Estilo.ModalProc}>
-                    <Text style={{ alignItems: 'center', padding: 22, margin: 5, color: 'black' }}>Antes de continuar...</Text>
-                    <Text style={{ alignItems: 'center', padding: 22, margin: 5, color: 'black' }}>¿Realmente desea continuar?</Text>
+                    <Text style={{ alignItems: 'center', padding: 22, margin: 5 }}>Antes de continuar...</Text>
+                    <Text style={{ alignItems: 'center', padding: 22, margin: 5 }}>¿Realmente desea continuar?</Text>
                     <Stack space={2} direction='coulumn'>
                         <Button style={{ width: 100 }} onPress={
                             () => {
@@ -247,7 +256,7 @@ const ManagePost = ({ route, navigation }) => {
     return (
         <NativeBaseProvider>
             <Box flex={10} style={Estilo.Contenedor}>
-                <Input value={Bus} onChangeText={(txt)=> setBus(txt) } style={Estilo.InputBus} type="text" w="full" maxW="300px" py="0" InputRightElement=
+                <Input value={Bus} onChange={handleBus} style={Estilo.InputBus} type="text" w="full" maxW="300px" py="0" InputRightElement=
                     {<Button size="xs" rounded="none" h="full" onPress={BuscarInfo}>Search
                     </Button>} placeholder="Tipea tu busqueda..." />
                 <Divider />
