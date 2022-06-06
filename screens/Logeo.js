@@ -19,13 +19,19 @@ import {
   ViroVRSceneNavigator,
 } from '@viro-community/react-viro';
 import LottieView from 'lottie-react-native';
-import Registrar from './Registrar';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import auth from '@react-native-firebase/auth';
+import FingerprintScanner from 'react-native-fingerprint-scanner';
+import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
 const isPaused360 = true;
+var SharedPreferences = require('react-native-shared-preferences');
 
 export default class Login extends React.Component {
   state = {
     email:'',
     password:'',
+    audio: 1.0,
+    sihay: false,
     registro: false,
     isPausedVideo360: true,
     timerGeneral: null,
@@ -45,6 +51,69 @@ export default class Login extends React.Component {
     opacidadlogin: 0.0,
     textColor: 'rgba(255,255,255,0.0)',
   };
+  
+  componentDidMount=()=>{
+    try{
+      SharedPreferences.getItem("splash", (value)=> { console.log("valuer. " + value),this.setState({audio: parseFloat (value)})})
+      var nicocado = auth().currentUser;
+      if(nicocado != null){
+        this.setState({email: nicocado.email, password: 'xxxxxxx', sihay: true})
+        FingerprintScanner
+        .authenticate({ description: 'Escane su huella digital en el escáner del dispositivo para continuar' })
+        .then(() => {
+          this.props.navigation.navigate('Tablero');
+        })
+        .catch((error) => {
+          console.log(error)
+        });
+      }
+    }catch(e){
+      console.log(e.message);
+    }
+    
+
+  }
+
+  onFacebookButtonPress=async()=> {
+    // Attempt login with permissions
+    const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
+  
+    if (result.isCancelled) {
+      throw 'El usuario canceló el proceso de inicio de sesión';
+    }
+  
+    // Once signed in, get the users AccesToken
+    const data = await AccessToken.getCurrentAccessToken();
+  
+    if (!data) {
+      throw 'Algo salió mal al obtener el token de acceso';
+    }
+  
+    // Create a Firebase credential with the AccessToken
+    const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
+  
+    // Sign-in the user with the credential
+    return auth().signInWithCredential(facebookCredential);
+  }
+  onGoogleButtonPress=async()=> {
+    try{
+      GoogleSignin.configure({
+        webClientId: '138564536884-bklklhoojl7vkarrpm63sg9f77gkf1op.apps.googleusercontent.com',
+      });
+      // Get the users ID token
+      const { idToken } = await GoogleSignin.signIn();
+    
+      // Create a Google credential with the token
+      const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+    
+      // Sign-in the user with the credential
+      this.login();
+      return auth().signInWithCredential(googleCredential);
+    }catch(e){
+      console.log(e);
+    }
+
+  }
 
   tick = () => {
     if (this.state.counterGeneral <= 6600) {
@@ -82,6 +151,8 @@ export default class Login extends React.Component {
         opacidadSplash: this.state.opacidadSplash - 0.1,
       });
     }
+
+
   };
 
   tick_posicion = () => {
@@ -118,16 +189,16 @@ export default class Login extends React.Component {
     auth()
     .signInWithEmailAndPassword(this.state.email, this.state.password)
   .then(() => {
-    console.log('Cuenta de usuario creada logeate!');
+    console.log('User account created & signed in!');
     this.props.navigation.navigate('Tablero');
   })
   .catch(error => {
     if (error.code === 'auth/email-already-in-use') {
-      console.log('El correo de email ya esta en uso');
+      console.log('Esa dirección de correo electrónico ya está en uso!');
     }
 
     if (error.code === 'auth/invalid-email') {
-      console.log('El correo de email es invalido!');
+      console.log('Esa dirección de correo electrónico no es válida!');
     }
 
     console.error(error);
@@ -167,11 +238,12 @@ export default class Login extends React.Component {
                       source={require('../res/animations/back360.mp4')}
                       loop={true}
                       paused={this.state.isPausedVideo360}
+                      volume={this.state.audio}
                       onBufferStart={() => {
-                        console.log('buf iniciado');
+                        console.log('buf start');
                       }}
                       onBufferEnd={() => {
-                        console.log('buf acabado');
+                        console.log('buf end');
                       }}
                       stereoMode={'None'}
                       onError={({nativeEvent: {error}}) => console.warn(error)}
@@ -223,7 +295,7 @@ export default class Login extends React.Component {
             />
             <TextInput
               style={styles.mail}
-              placeholder={'Correo electrónico'}
+              placeholder={'Email'}
               value={this.state.email}
               onChangeText={(text) => this.setState({ email: text })}
               placeholderTextColor={'rgba(255,255,255,0.5)'}
@@ -239,7 +311,8 @@ export default class Login extends React.Component {
             />
             <TextInput
               style={styles.pass}
-              placeholder={'Contraseña'}
+              placeholder={'Password'}
+              secureTextEntry={true}
               value={this.state.password}
               onChangeText={(text) => this.setState({ password: text })}
               placeholderTextColor={'rgba(255,255,255,0.5)'}
@@ -249,34 +322,35 @@ export default class Login extends React.Component {
           <View>
             <TouchableOpacity style={styles.botonInicio}
             onPress={()=> this.login()}>
-              <Text>Iniciar Sesión</Text>
+              <Text>Logear</Text>
             </TouchableOpacity>
           </View>
           <View>
             <TouchableOpacity onPress={()=> navigate("Registrar")} style={styles.botonRegistrarse}>
-              <Text>Registrarme</Text>
+              <Text>Registrar</Text>
             </TouchableOpacity>
           </View>
           <View>
-            <TouchableOpacity onPress={()=>  onFacebookButtonPress().then(() => console.log('Iniciando con Facebook!'))}style={styles.FacebookStyle} activeOpacity={0.5}>
+            <TouchableOpacity onPress={()=>  this.onFacebookButtonPress().then(() => this.props.navigation.navigate('Tablero'))}style={styles.FacebookStyle} activeOpacity={0.5}>
               <Icon
                 name={'ios-logo-facebook'}
                 size={28}
                 color={'rgba(255,255,255,0.7)'}
                 style={{top: 0}}
               />
-              <Text>Acceder con Facebook</Text>
+              <Text>logear con Facebook</Text>
             </TouchableOpacity>
           </View>
           <View>
-            <TouchableOpacity style={styles.GoogleStyle} activeOpacity={0.5}>
+            <TouchableOpacity style={styles.GoogleStyle} activeOpacity={0.5}
+            onPress={()=> this.onGoogleButtonPress()}>
               <Icon
                 name={'logo-google'}
                 size={28}
                 color={'rgba(0,0,0,0.7)'}
                 style={{top: 0}}
               />
-              <Text>Acceder con Google</Text>
+              <Text>Login with Google</Text>
             </TouchableOpacity>
           </View>
           {/*<View>
