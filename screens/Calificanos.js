@@ -10,38 +10,6 @@ const RateUs = ({ navigation }) => {
 
     const [temas, setTemas] = useState()
 
-    useEffect(() => {
-        getData()
-    }, [])
-
-
-    const getData = () => {
-
-        try {
-            const colRef = collection(db, 'Temas')
-            const dataRequest = getDocs(colRef)
-                .then((snapshot) => {
-                    //alert('Se accedio a la coleccion:' + snapshot.docs)
-                    let Temas = []
-                    snapshot.docs.forEach((doc) => {
-                        Temas.push({ ...doc.data(), id: doc.id })
-                    })
-                    setTemas(Temas)
-                    /* Temas.forEach(doc => {
-                        alert(doc.Titulo)
-                        console.log(doc)//doc.Titulo puede traer los titulños de cada documento
-                    }); */
-                })
-                .catch(err => {
-                    console.log(err.message)
-                })
-
-        } catch (e) {
-            console.log(e)
-        }
-
-    }
-
 
 
     const RenderItem = () => {
